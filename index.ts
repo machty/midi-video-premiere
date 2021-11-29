@@ -1,5 +1,4 @@
 /// <reference types="types-for-adobe/Premiere/2018"/>
-alert(String(app));
 
 function map(array, callback) {
     const out = [];
@@ -12,7 +11,6 @@ function map(array, callback) {
 $.writeln(
     map([1,2,3], a => 123)
 )
-
 
 const trackNr = 0;
 const clipNr = 0;

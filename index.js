@@ -1,5 +1,4 @@
 /// <reference types="types-for-adobe/Premiere/2018"/>
-alert(String(app));
 function map(array, callback) {
     var out = [];
     for (var index = 0; index < array.length; index++) {

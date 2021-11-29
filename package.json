@@ -3,11 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "scripts": {
-    "build": "tsc",
-    "serve": "tsc"
-  },
-  "author": "",
+  "author": "Alex Matchneer",
   "license": "ISC",
   "devDependencies": {
     "typescript": "^4.5.2"

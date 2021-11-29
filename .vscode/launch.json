@@ -14,8 +14,8 @@
         {
             "type": "extendscript-debug",
             "request": "launch",
-            "name": "2019",
-            "program": "${workspaceFolder}/${command:AskForScriptName}",
+            "name": "Start index.js",
+            "program": "${workspaceFolder}/index.js",
             "stopOnEntry": false
         }
     ]
