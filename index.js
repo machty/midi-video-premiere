@@ -10,7 +10,7 @@ function map(array, callback) {
 var forEach = map; // lazy
 function get(rootObject, path) {
     var object = rootObject;
-    var parts = path.split('.');
+    var parts = path.split(".");
     for (var index = 0; index < parts.length; index++) {
         var part = parts[index];
         object = object[part];
@@ -86,8 +86,6 @@ var midi = {
     ],
     timeDivision: 96
 };
-;
-;
 function createInstrument(name, shortName) {
     return {
         name: name,
@@ -98,12 +96,8 @@ function createInstrument(name, shortName) {
 var bassDrum = createInstrument("bass drum", "bd");
 var snareDrum = createInstrument("snare", "sn");
 var hiHatClosed = createInstrument("closed hi-hat", "hhc");
-var instruments = [
-    bassDrum,
-    snareDrum,
-    hiHatClosed
-];
-var instrumentsByShortName = indexBy(instruments, 'shortName');
+var instruments = [bassDrum, snareDrum, hiHatClosed];
+var instrumentsByShortName = indexBy(instruments, "shortName");
 var instrumentsByMidiNote = {
     36: bassDrum,
     38: snareDrum,
@@ -141,7 +135,7 @@ var videoTracks = seq.videoTracks;
 var availableClips = app.project.rootItem.children;
 for (var ci = 0; ci < availableClips.numItems; ci++) {
     var clip = availableClips[ci];
-    var _a = clip.name.split(','), shortName = _a[0], velocity = _a[1], description = _a[2];
+    var _a = clip.name.split(","), shortName = _a[0], velocity = _a[1], description = _a[2];
     var instrument = instrumentsByShortName[shortName];
     if (!instrument) {
         continue;
@@ -152,70 +146,89 @@ for (var ci = 0; ci < availableClips.numItems; ci++) {
         marker: marker
     });
 }
-var strikesByInstrument = groupBy(strikes, 'instrument.shortName');
-;
-;
+var strikesByInstrument = groupBy(strikes, "instrument.shortName");
+// Now that we have a database of video strikes to choose from, we need to
+// assemble the video sequences according to the midi.
+// There are lots of potential algorithms we could consider for doing this in the future.
+// But for now, we're doing:
+// - one video track per instrument
+// - no transitions / effects
+// - simply set the start/in/end points
+// - in case of overlap, find the midpoint between first and second clip strikes and cut the end of the first clip there and start the second there.
 var startingOffset = 5; // seconds
-var clipFramesBeforeMarker = 10; // hacky, but sidesteps the issue of markers having negative times
-var fps = 24;
-var clipSecondsBeforeBuffer = clipFramesBeforeMarker / fps;
+var CLIP_FRAMES_BEFORE_STRIKE = 10; // hacky, but sidesteps the issue of markers having negative times
+var FPS = 24;
+var CLIP_SECONDS_BEFORE_STRIKE = CLIP_FRAMES_BEFORE_STRIKE / FPS;
+var VirtualClipInstance = /** @class */ (function () {
+    function VirtualClipInstance(midiStrike, videoStrike) {
+        this.midiStrike = midiStrike;
+        this.videoStrike = videoStrike;
+        this.strikeAtSeconds = midiStrike.seconds;
+        this.beforeSeconds = CLIP_SECONDS_BEFORE_STRIKE;
+        this.afterSeconds = 5;
+    }
+    return VirtualClipInstance;
+}());
 // Create a VirtualTrack for each instrument.
 // Implement simple intersection-resolution algo.
 // Note: even though we're scoping to a single instrument's video tracks, we should
 // generalize this so that the clips stitched-together could come from a variety of instruments.
 var virtualTracks = map([bassDrum], function (instrument) {
-    var virtualTrack = {
-        clips: []
-    };
-    for (var index = 0; index < instrument.videoStrikes.length; index++) {
-        var firstStrike = instrument.videoStrikes[index];
-        var secondStrike = instrument.videoStrikes[index + 1];
-        var newClip = {
-            startSeconds: 1,
-            inSeconds: 2
-        };
-        virtualTrack.clips.push(newClip);
-        var previousClip = virtualTrack.clips[index - 1];
-        if (previousClip) {
-            // Check for overlaps
-        }
-        else {
-            // New clip can start as early as possible.
+    var midiStrikes = strikesByInstrument[instrument.shortName];
+    var virtualClips = map(midiStrikes, function (midiStrike) {
+        var newClip = new VirtualClipInstance(midiStrike, instrument.videoStrikes[0]);
+        return newClip;
+    });
+    for (var index = 0; index < virtualClips.length; index++) {
+        var clip0 = virtualClips[index];
+        var clip1 = virtualClips[index + 1];
+        if (clip1) {
+            // limit the end time of clip0;
+            // we don't know the real end time.
+            var timeBetweenStrikes = clip1.strikeAtSeconds - clip0.strikeAtSeconds;
+            var clip1videoStart = clip1.strikeAtSeconds - clip1.beforeSeconds;
+            var midpointBetweenStrikes = clip1.strikeAtSeconds + (timeBetweenStrikes / 2);
+            if (clip1videoStart < midpointBetweenStrikes) {
+                // If clip1's video starts before midpoint, then
+                // make clip0 end at midpoint and and make clip1 start at midpoint
+                clip0.afterSeconds = midpointBetweenStrikes - clip0.strikeAtSeconds;
+                clip1.beforeSeconds = clip1.strikeAtSeconds - midpointBetweenStrikes;
+            }
+            else {
+                // Otherwise, no need to change clip1's start time, but clip0 should end at clip0.start
+                clip0.afterSeconds = clip1videoStart - clip0.strikeAtSeconds;
+            }
         }
     }
+    var virtualTrack = {
+        virtualClips: virtualClips
+    };
     return virtualTrack;
 });
-// forEach([bassDrum, snareDrum], (instrument: Instrument, trackIndex: number) => {
-forEach([bassDrum], function (instrument, trackIndex) {
+forEach(virtualTracks, function (virtualTrack, trackIndex) {
     var videoTrack = videoTracks[trackIndex];
-    var videoStrike = instrument.videoStrikes[0];
-    var clip = videoStrike.clip, marker = videoStrike.marker;
-    // clip.setStartTime()
-    // marker.start.sec
-    var midiStrikes = strikesByInstrument[instrument.shortName];
-    if (!midiStrikes) {
-        throw "wat";
-    }
-    forEach(midiStrikes, function (midiStrike, index) {
-        // marker.start.seconds is negative for subclips???
-        // so we use clipSecondsBeforeBuffer
-        // const insertTime = startingOffset + midiStrike.seconds - marker.start.seconds;
-        var insertTime = startingOffset + midiStrike.seconds - clipSecondsBeforeBuffer;
-        videoTrack.overwriteClip(clip, insertTime);
-        // grab the clip instance we just added to the sequence
-        var clipInstance = videoTrack.clips[index];
-        // modifies the inPoint _WITHIN_ the clip in seconds.
-        // so if you INCREASE it, the clip as presented in the sequence will move to the left.
-        // Note: this does NOT appear to mutate the origin clip in the project, just the clip instance.
-        // clipInstance.inPoint = 0.5;
-        // clipInstance.start = 1; // position the clip start at 1s in sequence
-        // clipInstance.end = 2; // position the clip end at 2s in sequence
-        // clipInstance.inPoint = 0.5;
-        // so I should have everything I need.
-        // for each clip I can have it all worked out, and just say:
-        // start here, move inpoint here, play til.
-        // I just need to calculate this in advance (or not) and then run through it.
-        debugger;
-        // $.writeln(`${instrument.name}: midi strike: ${insertTime}`);
+    forEach(virtualTrack.virtualClips, function (virtualClip, clipIndex) {
+        var instrument = virtualClip.midiStrike.instrument;
+        var clip = virtualClip.videoStrike.clip;
+        // disregard these errors; .start and the like are actually writeable
+        var clipStart = virtualClip.strikeAtSeconds - virtualClip.beforeSeconds + startingOffset;
+        var clipEnd = virtualClip.strikeAtSeconds + virtualClip.afterSeconds + startingOffset;
+        // videoTrack.insertClip(clip, clipStart);
+        // const clipInstance = videoTrack.clips[clipIndex] as TrackItem;
+        // clipInstance.start = clipStart;
+        // clipInstance.end = clipEnd;
+        // clipInstance.name = `ALEX${clipIndex}`;
+        var duration = clipEnd - clipStart;
+        $.writeln("".concat(instrument.name, ": midi strike: ").concat(clipStart, " - ").concat(clipEnd, ", duration: ").concat(duration));
+        // startingOffset + midiStrike.seconds - clipSecondsBeforeBuffer;
     });
 });
+//     // grab the clip instance we just added to the sequence
+//     const clipInstance = videoTrack.clips[index] as TrackItem;
+//     // modifies the inPoint _WITHIN_ the clip in seconds.
+//     // so if you INCREASE it, the clip as presented in the sequence will move to the left.
+//     // Note: this does NOT appear to mutate the origin clip in the project, just the clip instance.
+//     // clipInstance.inPoint = 0.5;
+//     // clipInstance.start = 1; // position the clip start at 1s in sequence
+//     // clipInstance.end = 2; // position the clip end at 2s in sequence
+//     // clipInstance.inPoint = 0.5;
