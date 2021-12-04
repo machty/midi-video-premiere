@@ -12,6 +12,17 @@
 //     return out;
 // }
 
+function map(array: any[], callback) {
+    const ret = [];
+    for (let index = 0; index < array.length; index++) {
+        const element = array[index];
+        ret.push(callback(element));
+    }
+    return ret;
+}
+
+const forEach = map; // lazy
+
 function get(rootObject, path) {
     let object = rootObject;
     let parts = path.split('.');
@@ -105,7 +116,6 @@ interface strike {
     instrument: instrument;
 };
 
-
 const bassDrum = {
     name: "bass drum",
     shortName: "bd",
@@ -123,6 +133,7 @@ const instruments: instrument[] = [
     snareDrum,
     hiHatClosed
 ];
+const instrumentsByShortName = indexBy(instruments, 'shortName');
 
 const instrumentsByMidiNote = {
     36: bassDrum,
@@ -160,7 +171,7 @@ for (let index = 0; index < track.event.length; index++) {
 }
 
 // OK now we have strikes, split them by instrument for now
-const strikeByInstrument = groupBy(strikes, 'instrument.name');
+const strikeByInstrument = groupBy(strikes, 'instrument.shortName');
 
 // Let's schedule a bunch of bass drum hits.
 // We need to specify where we can find all the hits.
@@ -185,13 +196,27 @@ const videoClip = videoTrack.clips[clipNr];
 
 // Get a list of all the clips that are in the project panel
 const availableClips = app.project.rootItem.children;
-const clip = availableClips[2];
-const markers = clip.getMarkers();
-const marker: Marker = markers[1];
-$.writeln(marker.name);
+for (let ci = 0; ci < availableClips.numItems; ci++) {
+    const clip = availableClips[ci];
+    const markers = clip.getMarkers();
+    for (let mi = 0; mi < markers.numMarkers; mi++) {
+        const marker: Marker = markers[mi];
+        if (!marker.comments) { continue; }
+        const lines = marker.comments.split("\n");
+        forEach(lines, (line) => {
+            const [shortName, velocity, description] = line.split(',');
+            const instrument = instrumentsByShortName[shortName];
+            if (instrument) {
+                debugger;
+            }
+        });
+    }
+}
+
+// $.writeln(marker.name);
 // marker.start.seconds
 
-videoTrack.insertClip(clip, 1);
-videoTrack.insertClip(clip, 2);
-videoTrack.insertClip(clip, 4);
+// videoTrack.insertClip(clip, 1);
+// videoTrack.insertClip(clip, 2);
+// videoTrack.insertClip(clip, 4);
 // videoTrack.insertClip(trackNr, trackNr);
