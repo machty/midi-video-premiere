@@ -1,22 +1,10 @@
 /// <reference types="types-for-adobe/Premiere/2018"/>
 
-// type ArrayIshOf<K> = {
-//     length: number;
-// };
-
-// function map<K, lengthProp>(array: ArrayIshOf<K>, callback) : K[] {
-//     const out = [];
-//     for (let index = 0; index < array[lengthProp]; index++) {
-//         out.push(callback(array[index]));
-//     }
-//     return out;
-// }
-
 function map(array: any[], callback) {
     const ret = [];
     for (let index = 0; index < array.length; index++) {
         const element = array[index];
-        ret.push(callback(element));
+        ret.push(callback(element, index));
     }
     return ret;
 }
@@ -150,7 +138,7 @@ const instrumentsByMidiNote = {
 
 const bpm = 100;
 // we insert by time, so we need something that'll just
-// bpm2wat
+// function bpm2wat
 
 
 const strikes: MidiStrike[] = [];
@@ -172,52 +160,59 @@ for (let index = 0; index < track.event.length; index++) {
         continue;
     }
     $.writeln(`${instrument.name} playing at time ${time}`);
-    strikes.push({ seconds: 123, velocity, instrument });
+    // 24 * 4 = number
+    // 96 beats per second
+    const seconds = time / 96;
+    strikes.push({ seconds, velocity, instrument });
 }
 
-// OK now we have strikes, split them by instrument for now
-const strikeByInstrument = groupBy(strikes, 'instrument.shortName');
-
-// Let's schedule a bunch of bass drum hits.
-// We need to specify where we can find all the hits.
-// The ideal is that every clip has markers for each thing.
-// maybe we say marker descriptions are CSVs
 
 const trackNr = 0;
 const clipNr = 0;
 
 const seq = app.project.activeSequence;
 const videoTracks = seq.videoTracks;
-const videoTrack = videoTracks[trackNr];
-const clips = videoTrack.clips;
-const videoClip = videoTrack.clips[clipNr];
 
-// Get a list of all the clips that are in the project panel
+// Find all the instrument strike subclips
 const availableClips = app.project.rootItem.children;
 for (let ci = 0; ci < availableClips.numItems; ci++) {
     const clip = availableClips[ci];
-    const markers = clip.getMarkers();
-    for (let mi = 0; mi < markers.numMarkers; mi++) {
-        const marker: Marker = markers[mi];
-        if (!marker.comments) { continue; }
-        const lines = marker.comments.split("\n");
-        forEach(lines, (line) => {
-            const [shortName, velocity, description] = line.split(',');
-            const instrument = instrumentsByShortName[shortName];
-            if (instrument) {
-                instrument.videoStrikes.push({
-                    clip,
-                    marker,
-                })
-            }
-        });
+    const [shortName, velocity, description] = clip.name.split(',');
+    const instrument = instrumentsByShortName[shortName];
+    if (!instrument) {
+        continue;
     }
+
+    const marker = clip.getMarkers()[0] as Marker;
+
+    instrument.videoStrikes.push({
+        clip,
+        marker,
+    })
 }
 
-// $.writeln(marker.name);
-// marker.start.seconds
+const strikesByInstrument = groupBy(strikes, 'instrument.shortName');
+const startingOffset = 5; // seconds
 
-// videoTrack.insertClip(clip, 1);
-// videoTrack.insertClip(clip, 2);
-// videoTrack.insertClip(clip, 4);
-// videoTrack.insertClip(trackNr, trackNr);
+// forEach([bassDrum, snareDrum], (instrument: Instrument, trackIndex: number) => {
+forEach([bassDrum], (instrument: Instrument, trackIndex: number) => {
+    const videoTrack = videoTracks[trackIndex];
+    const videoStrike = instrument.videoStrikes[0];
+    const { clip, marker } = videoStrike;
+    debugger;
+    // marker.start.sec
+
+    const midiStrikes = strikesByInstrument[instrument.shortName];
+    if (!midiStrikes) {
+        throw "wat";
+    }
+
+    forEach(midiStrikes, (midiStrike: MidiStrike, index: number) => {
+        // const insertTime = startingOffset + midiStrike.seconds - marker.start.seconds;
+        
+        const insertTime = startingOffset + midiStrike.seconds - marker.start.seconds;
+        videoTrack.insertClip(clip, insertTime);
+        debugger;
+        $.writeln(`${instrument.name}: midi strike: ${insertTime}`);
+    });
+});
