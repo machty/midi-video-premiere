@@ -187,10 +187,59 @@ for (let ci = 0; ci < availableClips.numItems; ci++) {
 }
 
 const strikesByInstrument = groupBy(strikes, 'instrument.shortName');
+
+
+// Now that we have a database of video strikes to choose from, we need to
+// assemble the video sequences according to the midi.
+// There are lots of potential algorithms we could consider for doing this in the future.
+// But for now, we're doing:
+// - one video track per instrument
+// - no transitions / effects
+// - simply set the start/in/end points
+// - in case of overlap, find the midpoint between first and second clip strikes and cut the end of the first clip there and start the second there.
+
+interface VirtualClipInstance {
+    startSeconds: number;
+    inSeconds: number;
+};
+
+interface VirtualTrack {
+    clips: VirtualClipInstance[];
+};
+
 const startingOffset = 5; // seconds
 const clipFramesBeforeMarker = 10; // hacky, but sidesteps the issue of markers having negative times
 const fps = 24;
 const clipSecondsBeforeBuffer = clipFramesBeforeMarker / fps;
+
+// Create a VirtualTrack for each instrument.
+// Implement simple intersection-resolution algo.
+// Note: even though we're scoping to a single instrument's video tracks, we should
+// generalize this so that the clips stitched-together could come from a variety of instruments.
+const virtualTracks: VirtualTrack[] = map([bassDrum], (instrument: Instrument) => {
+    const virtualTrack: VirtualTrack = {
+        clips: []
+    };
+    for (let index = 0; index < instrument.videoStrikes.length; index++) {
+        const firstStrike = instrument.videoStrikes[index];
+        const secondStrike = instrument.videoStrikes[index + 1];
+
+        const newClip: VirtualClipInstance = {
+            startSeconds: 1,
+            inSeconds: 2
+        };
+        virtualTrack.clips.push(newClip);
+
+        const previousClip: VirtualClipInstance = virtualTrack.clips[index - 1];
+        if (previousClip) {
+            // Check for overlaps
+        } else {
+            // New clip can start as early as possible.
+        }
+    }
+    return virtualTrack;
+});
+
 
 // forEach([bassDrum, snareDrum], (instrument: Instrument, trackIndex: number) => {
 forEach([bassDrum], (instrument: Instrument, trackIndex: number) => {
@@ -212,6 +261,23 @@ forEach([bassDrum], (instrument: Instrument, trackIndex: number) => {
         
         const insertTime = startingOffset + midiStrike.seconds - clipSecondsBeforeBuffer;
         videoTrack.overwriteClip(clip, insertTime);
-        $.writeln(`${instrument.name}: midi strike: ${insertTime}`);
+
+        // grab the clip instance we just added to the sequence
+        const clipInstance = videoTrack.clips[index] as TrackItem;
+
+        // modifies the inPoint _WITHIN_ the clip in seconds.
+        // so if you INCREASE it, the clip as presented in the sequence will move to the left.
+        // Note: this does NOT appear to mutate the origin clip in the project, just the clip instance.
+        // clipInstance.inPoint = 0.5;
+        // clipInstance.start = 1; // position the clip start at 1s in sequence
+        // clipInstance.end = 2; // position the clip end at 2s in sequence
+        // clipInstance.inPoint = 0.5;
+        // so I should have everything I need.
+        // for each clip I can have it all worked out, and just say:
+        // start here, move inpoint here, play til.
+        // I just need to calculate this in advance (or not) and then run through it.
+
+        debugger;
+        // $.writeln(`${instrument.name}: midi strike: ${insertTime}`);
     });
 });
