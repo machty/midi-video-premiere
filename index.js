@@ -97,18 +97,17 @@ var midi = {
     timeDivision: 96
 };
 ;
-var bassDrum = {
-    name: "bass drum",
-    shortName: "bd"
-};
-var snareDrum = {
-    name: "snare",
-    shortName: "sn"
-};
-var hiHatClosed = {
-    name: "close hi-hat",
-    shortName: "hhc"
-};
+;
+function createInstrument(name, shortName) {
+    return {
+        name: name,
+        shortName: shortName,
+        videoStrikes: []
+    };
+}
+var bassDrum = createInstrument("bass drum", "bd");
+var snareDrum = createInstrument("snare", "sn");
+var hiHatClosed = createInstrument("closed hi-hat", "hhc");
 var instruments = [
     bassDrum,
     snareDrum,
@@ -150,7 +149,6 @@ var strikeByInstrument = groupBy(strikes, 'instrument.shortName');
 // We need to specify where we can find all the hits.
 // The ideal is that every clip has markers for each thing.
 // maybe we say marker descriptions are CSVs
-debugger;
 var trackNr = 0;
 var clipNr = 0;
 var seq = app.project.activeSequence;
@@ -158,29 +156,34 @@ var videoTracks = seq.videoTracks;
 var videoTrack = videoTracks[trackNr];
 var clips = videoTrack.clips;
 var videoClip = videoTrack.clips[clipNr];
-// $.writeln(`the clips`)
-// $.writeln(
-//     map(videoTrack.clips, c => c.name)
-// )
 // Get a list of all the clips that are in the project panel
 var availableClips = app.project.rootItem.children;
-for (var ci = 0; ci < availableClips.numItems; ci++) {
+var _loop_1 = function (ci) {
     var clip = availableClips[ci];
     var markers = clip.getMarkers();
-    for (var mi = 0; mi < markers.numMarkers; mi++) {
+    var _loop_2 = function (mi) {
         var marker = markers[mi];
         if (!marker.comments) {
-            continue;
+            return "continue";
         }
         var lines = marker.comments.split("\n");
         forEach(lines, function (line) {
             var _a = line.split(','), shortName = _a[0], velocity = _a[1], description = _a[2];
             var instrument = instrumentsByShortName[shortName];
             if (instrument) {
-                debugger;
+                instrument.videoStrikes.push({
+                    clip: clip,
+                    marker: marker
+                });
             }
         });
+    };
+    for (var mi = 0; mi < markers.numMarkers; mi++) {
+        _loop_2(mi);
     }
+};
+for (var ci = 0; ci < availableClips.numItems; ci++) {
+    _loop_1(ci);
 }
 // $.writeln(marker.name);
 // marker.start.seconds

@@ -105,30 +105,35 @@ const midi = {
   timeDivision: 96,
 };
 
-interface instrument {
+interface Instrument {
     name: string;
     shortName: string;
+    videoStrikes: VideoStrike[];
 }
 
-interface strike {
+interface VideoStrike {
+    clip: ProjectItem;
+    marker: Marker;
+};
+
+interface MidiStrike {
     seconds: number;
     velocity: number;
-    instrument: instrument;
+    instrument: Instrument;
 };
 
-const bassDrum = {
-    name: "bass drum",
-    shortName: "bd",
-};
-const snareDrum = {
-    name: "snare",
-    shortName: "sn",
-};
-const hiHatClosed = {
-    name: "close hi-hat",
-    shortName: "hhc",
+function createInstrument(name, shortName) {
+    return {
+        name,
+        shortName,
+        videoStrikes: []
+    };
 }
-const instruments: instrument[] = [
+
+const bassDrum = createInstrument("bass drum", "bd");
+const snareDrum = createInstrument("snare", "sn");
+const hiHatClosed = createInstrument("closed hi-hat", "hhc");
+const instruments: Instrument[] = [
     bassDrum,
     snareDrum,
     hiHatClosed
@@ -148,7 +153,7 @@ const bpm = 100;
 // bpm2wat
 
 
-const strikes: strike[] = [];
+const strikes: MidiStrike[] = [];
 
 const track = midi.track[0];
 let time = 0;
@@ -178,8 +183,6 @@ const strikeByInstrument = groupBy(strikes, 'instrument.shortName');
 // The ideal is that every clip has markers for each thing.
 // maybe we say marker descriptions are CSVs
 
-debugger;
-
 const trackNr = 0;
 const clipNr = 0;
 
@@ -188,11 +191,6 @@ const videoTracks = seq.videoTracks;
 const videoTrack = videoTracks[trackNr];
 const clips = videoTrack.clips;
 const videoClip = videoTrack.clips[clipNr];
-
-// $.writeln(`the clips`)
-// $.writeln(
-//     map(videoTrack.clips, c => c.name)
-// )
 
 // Get a list of all the clips that are in the project panel
 const availableClips = app.project.rootItem.children;
@@ -207,7 +205,10 @@ for (let ci = 0; ci < availableClips.numItems; ci++) {
             const [shortName, velocity, description] = line.split(',');
             const instrument = instrumentsByShortName[shortName];
             if (instrument) {
-                debugger;
+                instrument.videoStrikes.push({
+                    clip,
+                    marker,
+                })
             }
         });
     }
