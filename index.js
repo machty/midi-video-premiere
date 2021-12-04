@@ -103,10 +103,10 @@ var instrumentsByMidiNote = {
     38: snareDrum,
     42: hiHatClosed
 };
-// deltaTime = 24 is a sixteenth note.
-var bpm = 100;
-// we insert by time, so we need something that'll just
-// function bpm2wat
+var BPM = 100;
+var BEATS_PER_SECOND = BPM / 60;
+var PULSES_PER_QUARTER_NOTE = midi.timeDivision;
+var BEATS_PER_MEASURE = 4; // TODO: make this take into account time signature events?
 var strikes = [];
 var track = midi.track[0];
 var time = 0;
@@ -125,9 +125,7 @@ for (var index = 0; index < track.event.length; index++) {
         continue;
     }
     // $.writeln(`${instrument.name} playing at time ${time}`);
-    // 24 * 4 = number
-    // 96 beats per second
-    var seconds = time / 96;
+    var seconds = time / PULSES_PER_QUARTER_NOTE / BEATS_PER_SECOND;
     strikes.push({ seconds: seconds, velocity: velocity, instrument: instrument });
 }
 var seq = app.project.activeSequence;
@@ -155,7 +153,7 @@ var strikesByInstrument = groupBy(strikes, "instrument.shortName");
 // - no transitions / effects
 // - simply set the start/in/end points
 // - in case of overlap, find the midpoint between first and second clip strikes and cut the end of the first clip there and start the second there.
-var startingOffset = 5; // seconds
+var STARTING_OFFSET = 1; // seconds
 var CLIP_FRAMES_BEFORE_STRIKE = 10; // hacky, but sidesteps the issue of markers having negative times
 var FPS = 24;
 var CLIP_SECONDS_BEFORE_STRIKE = CLIP_FRAMES_BEFORE_STRIKE / FPS;
@@ -187,7 +185,7 @@ var virtualTracks = map([bassDrum], function (instrument) {
             // we don't know the real end time.
             var timeBetweenStrikes = clip1.strikeAtSeconds - clip0.strikeAtSeconds;
             var clip1videoStart = clip1.strikeAtSeconds - clip1.beforeSeconds;
-            var midpointBetweenStrikes = clip1.strikeAtSeconds + (timeBetweenStrikes / 2);
+            var midpointBetweenStrikes = clip0.strikeAtSeconds + timeBetweenStrikes / 2;
             if (clip1videoStart < midpointBetweenStrikes) {
                 // If clip1's video starts before midpoint, then
                 // make clip0 end at midpoint and and make clip1 start at midpoint
@@ -210,25 +208,24 @@ forEach(virtualTracks, function (virtualTrack, trackIndex) {
     forEach(virtualTrack.virtualClips, function (virtualClip, clipIndex) {
         var instrument = virtualClip.midiStrike.instrument;
         var clip = virtualClip.videoStrike.clip;
-        // disregard these errors; .start and the like are actually writeable
-        var clipStart = virtualClip.strikeAtSeconds - virtualClip.beforeSeconds + startingOffset;
-        var clipEnd = virtualClip.strikeAtSeconds + virtualClip.afterSeconds + startingOffset;
-        // videoTrack.insertClip(clip, clipStart);
-        // const clipInstance = videoTrack.clips[clipIndex] as TrackItem;
-        // clipInstance.start = clipStart;
-        // clipInstance.end = clipEnd;
-        // clipInstance.name = `ALEX${clipIndex}`;
+        // We're intentionally minimizing our interactions with the clip once
+        // we've inserted into the sequence. The plan is:
+        // - Insert the clip right when it's supposed to begin
+        // - Adjust the clip's in-time in case we had to adjust the beforeTime
+        var clipStart = virtualClip.strikeAtSeconds -
+            virtualClip.beforeSeconds +
+            STARTING_OFFSET;
+        var clipEnd = virtualClip.strikeAtSeconds + virtualClip.afterSeconds + STARTING_OFFSET;
+        videoTrack.overwriteClip(clip, clipStart);
+        // grab the clip instance we just added to the sequence
+        var clipInstance = videoTrack.clips[clipIndex];
+        var delta = CLIP_SECONDS_BEFORE_STRIKE - virtualClip.beforeSeconds;
+        if (delta !== 0) {
+            // delta is only ever positive.
+            // when it is, we need to add it to the inPoint so that the clip starts _later_
+            clipInstance.inPoint = clipInstance.inPoint.seconds + delta;
+        }
         var duration = clipEnd - clipStart;
         $.writeln("".concat(instrument.name, ": midi strike: ").concat(clipStart, " - ").concat(clipEnd, ", duration: ").concat(duration));
-        // startingOffset + midiStrike.seconds - clipSecondsBeforeBuffer;
     });
 });
-//     // grab the clip instance we just added to the sequence
-//     const clipInstance = videoTrack.clips[index] as TrackItem;
-//     // modifies the inPoint _WITHIN_ the clip in seconds.
-//     // so if you INCREASE it, the clip as presented in the sequence will move to the left.
-//     // Note: this does NOT appear to mutate the origin clip in the project, just the clip instance.
-//     // clipInstance.inPoint = 0.5;
-//     // clipInstance.start = 1; // position the clip start at 1s in sequence
-//     // clipInstance.end = 2; // position the clip end at 2s in sequence
-//     // clipInstance.inPoint = 0.5;

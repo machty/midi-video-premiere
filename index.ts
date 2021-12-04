@@ -130,11 +130,10 @@ const instrumentsByMidiNote = {
   42: hiHatClosed,
 };
 
-// deltaTime = 24 is a sixteenth note.
-
-const bpm = 100;
-// we insert by time, so we need something that'll just
-// function bpm2wat
+const BPM = 100;
+const BEATS_PER_SECOND = BPM / 60;
+const PULSES_PER_QUARTER_NOTE = midi.timeDivision;
+const BEATS_PER_MEASURE = 4; // TODO: make this take into account time signature events?
 
 const strikes: MidiStrike[] = [];
 
@@ -155,9 +154,7 @@ for (let index = 0; index < track.event.length; index++) {
     continue;
   }
   // $.writeln(`${instrument.name} playing at time ${time}`);
-  // 24 * 4 = number
-  // 96 beats per second
-  const seconds = time / 96;
+  const seconds = time / PULSES_PER_QUARTER_NOTE / BEATS_PER_SECOND;
   strikes.push({ seconds, velocity, instrument });
 }
 
@@ -192,11 +189,10 @@ const strikesByInstrument = groupBy(strikes, "instrument.shortName");
 // - simply set the start/in/end points
 // - in case of overlap, find the midpoint between first and second clip strikes and cut the end of the first clip there and start the second there.
 
-const startingOffset = 5; // seconds
+const STARTING_OFFSET = 1; // seconds
 const CLIP_FRAMES_BEFORE_STRIKE = 10; // hacky, but sidesteps the issue of markers having negative times
 const FPS = 24;
 const CLIP_SECONDS_BEFORE_STRIKE = CLIP_FRAMES_BEFORE_STRIKE / FPS;
-
 
 class VirtualClipInstance {
   strikeAtSeconds: number;
@@ -242,27 +238,28 @@ const virtualTracks: VirtualTrack[] = map(
       const clip0: VirtualClipInstance = virtualClips[index];
       const clip1: VirtualClipInstance = virtualClips[index + 1];
 
-
       if (clip1) {
-          // limit the end time of clip0;
-          // we don't know the real end time.
-          const timeBetweenStrikes = clip1.strikeAtSeconds - clip0.strikeAtSeconds;
-          const clip1videoStart = clip1.strikeAtSeconds - clip1.beforeSeconds;
-          const midpointBetweenStrikes = clip1.strikeAtSeconds + (timeBetweenStrikes / 2);
-          if (clip1videoStart < midpointBetweenStrikes) {
-              // If clip1's video starts before midpoint, then
-              // make clip0 end at midpoint and and make clip1 start at midpoint
-              clip0.afterSeconds = midpointBetweenStrikes - clip0.strikeAtSeconds;
-              clip1.beforeSeconds = clip1.strikeAtSeconds - midpointBetweenStrikes;
-          } else {
-              // Otherwise, no need to change clip1's start time, but clip0 should end at clip0.start
-              clip0.afterSeconds = clip1videoStart - clip0.strikeAtSeconds;
-          }
+        // limit the end time of clip0;
+        // we don't know the real end time.
+        const timeBetweenStrikes =
+          clip1.strikeAtSeconds - clip0.strikeAtSeconds;
+        const clip1videoStart = clip1.strikeAtSeconds - clip1.beforeSeconds;
+        const midpointBetweenStrikes =
+          clip0.strikeAtSeconds + timeBetweenStrikes / 2;
+        if (clip1videoStart < midpointBetweenStrikes) {
+          // If clip1's video starts before midpoint, then
+          // make clip0 end at midpoint and and make clip1 start at midpoint
+          clip0.afterSeconds = midpointBetweenStrikes - clip0.strikeAtSeconds;
+          clip1.beforeSeconds = clip1.strikeAtSeconds - midpointBetweenStrikes;
+        } else {
+          // Otherwise, no need to change clip1's start time, but clip0 should end at clip0.start
+          clip0.afterSeconds = clip1videoStart - clip0.strikeAtSeconds;
+        }
       }
     }
 
     const virtualTrack: VirtualTrack = {
-      virtualClips: virtualClips
+      virtualClips: virtualClips,
     };
 
     return virtualTrack;
@@ -272,40 +269,37 @@ const virtualTracks: VirtualTrack[] = map(
 forEach(virtualTracks, (virtualTrack: VirtualTrack, trackIndex: number) => {
   const videoTrack = videoTracks[trackIndex];
 
+  forEach(
+    virtualTrack.virtualClips,
+    (virtualClip: VirtualClipInstance, clipIndex: number) => {
+      const instrument = virtualClip.midiStrike.instrument;
+      const clip = virtualClip.videoStrike.clip;
 
-  forEach(virtualTrack.virtualClips, (virtualClip: VirtualClipInstance, clipIndex: number) => {
-    const instrument = virtualClip.midiStrike.instrument;
-    const clip = virtualClip.videoStrike.clip;
+      // We're intentionally minimizing our interactions with the clip once
+      // we've inserted into the sequence. The plan is:
+      // - Insert the clip right when it's supposed to begin
+      // - Adjust the clip's in-time in case we had to adjust the beforeTime
+      const clipStart =
+        virtualClip.strikeAtSeconds -
+        virtualClip.beforeSeconds +
+        STARTING_OFFSET;
+      const clipEnd =
+        virtualClip.strikeAtSeconds + virtualClip.afterSeconds + STARTING_OFFSET;
 
+      videoTrack.overwriteClip(clip, clipStart);
+      // grab the clip instance we just added to the sequence
+      const clipInstance = videoTrack.clips[clipIndex] as TrackItem;
+      const delta = CLIP_SECONDS_BEFORE_STRIKE - virtualClip.beforeSeconds;
 
-    // disregard these errors; .start and the like are actually writeable
-    const clipStart = virtualClip.strikeAtSeconds - virtualClip.beforeSeconds + startingOffset;
-    const clipEnd = virtualClip.strikeAtSeconds + virtualClip.afterSeconds + startingOffset;
-
-    // videoTrack.insertClip(clip, clipStart);
-    // const clipInstance = videoTrack.clips[clipIndex] as TrackItem;
-    // clipInstance.start = clipStart;
-    // clipInstance.end = clipEnd;
-    // clipInstance.name = `ALEX${clipIndex}`;
-
-    const duration = clipEnd - clipStart;
-    $.writeln(`${instrument.name}: midi strike: ${clipStart} - ${clipEnd}, duration: ${duration}`);
-      // startingOffset + midiStrike.seconds - clipSecondsBeforeBuffer;
-  });
-
-
+      if (delta !== 0 ) {
+        // delta is only ever positive.
+        // when it is, we need to add it to the inPoint so that the clip starts _later_
+        clipInstance.inPoint = clipInstance.inPoint.seconds + delta;
+      }
+      const duration = clipEnd - clipStart;
+      $.writeln(
+        `${instrument.name}: midi strike: ${clipStart} - ${clipEnd}, duration: ${duration}`
+      );
+    }
+  );
 });
-
-
-//     // grab the clip instance we just added to the sequence
-//     const clipInstance = videoTrack.clips[index] as TrackItem;
-
-//     // modifies the inPoint _WITHIN_ the clip in seconds.
-//     // so if you INCREASE it, the clip as presented in the sequence will move to the left.
-//     // Note: this does NOT appear to mutate the origin clip in the project, just the clip instance.
-//     // clipInstance.inPoint = 0.5;
-//     // clipInstance.start = 1; // position the clip start at 1s in sequence
-//     // clipInstance.end = 2; // position the clip end at 2s in sequence
-//     // clipInstance.inPoint = 0.5;
-
-
