@@ -9,6 +9,36 @@
 //     }
 //     return out;
 // }
+function get(rootObject, path) {
+    var object = rootObject;
+    var parts = path.split('.');
+    for (var index = 0; index < parts.length; index++) {
+        var part = parts[index];
+        object = object[part];
+    }
+    return object;
+}
+function indexBy(array, key) {
+    var ret = {};
+    for (var index = 0; index < array.length; index++) {
+        var element = array[index];
+        var value = get(element, key);
+        ret[value] = element;
+    }
+    return ret;
+}
+function groupBy(array, key) {
+    var ret = {};
+    for (var index = 0; index < array.length; index++) {
+        var element = array[index];
+        var value = get(element, key);
+        if (!ret[value]) {
+            ret[value] = [];
+        }
+        ret[value].push(element);
+    }
+    return ret;
+}
 var midi = {
     formatType: 0,
     tracks: 1,
@@ -58,16 +88,27 @@ var midi = {
     timeDivision: 96
 };
 ;
-var instruments = {
-    36: {
-        name: "bass drum"
-    },
-    38: {
-        name: "snare"
-    },
-    42: {
-        name: "closed hi-hat"
-    }
+var bassDrum = {
+    name: "bass drum",
+    shortName: "bd"
+};
+var snareDrum = {
+    name: "snare",
+    shortName: "sn"
+};
+var hiHatClosed = {
+    name: "close hi-hat",
+    shortName: "hhc"
+};
+var instruments = [
+    bassDrum,
+    snareDrum,
+    hiHatClosed
+];
+var instrumentsByMidiNote = {
+    36: bassDrum,
+    38: snareDrum,
+    42: hiHatClosed
 };
 // deltaTime = 24 is a sixteenth note.
 var bpm = 100;
@@ -85,25 +126,21 @@ for (var index = 0; index < track.event.length; index++) {
     }
     var note = event.data[0];
     var velocity = event.data[1];
-    var instrument = instruments[note];
-    if (instrument) {
-        $.writeln("".concat(instrument.name, " playing at time ").concat(time));
-        strikes.push({ seconds: 123, velocity: velocity, instrument: instrument });
+    var instrument = instrumentsByMidiNote[note];
+    if (!instrument) {
+        // no midi note mapping for this instrument
+        continue;
     }
+    $.writeln("".concat(instrument.name, " playing at time ").concat(time));
+    strikes.push({ seconds: 123, velocity: velocity, instrument: instrument });
 }
-// OK now we have strikes.
-// They may overlap. There are many ways to "solve" these constraints with editing.
-// For now we'll do one instrument per.
-
-// bass drum for now
-
-
-
-
+// OK now we have strikes, split them by instrument for now
+var strikeByInstrument = groupBy(strikes, 'instrument.name');
+// Let's schedule a bunch of bass drum hits.
+// We need to specify where we can find all the hits.
+// The ideal is that every clip has markers for each thing.
+// maybe we say marker descriptions are CSVs
 debugger;
-// OK... sooooooo
-// we have midi data. but Ableton doesn't seem to export the tempo of the track.
-// that's fine we can just write it here.
 var trackNr = 0;
 var clipNr = 0;
 var seq = app.project.activeSequence;

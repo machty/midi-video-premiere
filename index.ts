@@ -12,6 +12,39 @@
 //     return out;
 // }
 
+function get(rootObject, path) {
+    let object = rootObject;
+    let parts = path.split('.');
+    for (let index = 0; index < parts.length; index++) {
+        const part = parts[index];
+        object = object[part];
+    }
+    return object;
+}
+
+function indexBy(array: any[], key: string) {
+    const ret = {};
+    for (let index = 0; index < array.length; index++) {
+        const element = array[index];
+        const value = get(element, key)
+        ret[value] = element;
+    }
+    return ret;
+}
+
+function groupBy(array: any[], key: string) {
+    const ret = {};
+    for (let index = 0; index < array.length; index++) {
+        const element = array[index];
+        const value = get(element, key)
+        if (!ret[value]) {
+            ret[value] = [];
+        }
+        ret[value].push(element);
+    }
+    return ret;
+}
+
 const midi = {
   formatType: 0,
   tracks: 1,
@@ -63,6 +96,7 @@ const midi = {
 
 interface instrument {
     name: string;
+    shortName: string;
 }
 
 interface strike {
@@ -71,16 +105,29 @@ interface strike {
     instrument: instrument;
 };
 
-const instruments = {
-    36: {
-        name: "bass drum",
-    },
-    38: {
-        name: "snare",
-    },
-    42: {
-        name: "closed hi-hat",
-    },
+
+const bassDrum = {
+    name: "bass drum",
+    shortName: "bd",
+};
+const snareDrum = {
+    name: "snare",
+    shortName: "sn",
+};
+const hiHatClosed = {
+    name: "close hi-hat",
+    shortName: "hhc",
+}
+const instruments: instrument[] = [
+    bassDrum,
+    snareDrum,
+    hiHatClosed
+];
+
+const instrumentsByMidiNote = {
+    36: bassDrum,
+    38: snareDrum,
+    42: hiHatClosed
 }
 
 // deltaTime = 24 is a sixteenth note.
@@ -103,19 +150,24 @@ for (let index = 0; index < track.event.length; index++) {
     }
     const note = event.data[0];
     const velocity = event.data[1] as number;
-    const instrument = instruments[note];
-    if (instrument) {
-        $.writeln(`${instrument.name} playing at time ${time}`);
-        strikes.push({ seconds: 123, velocity, instrument });
+    const instrument = instrumentsByMidiNote[note];
+    if (!instrument) {
+        // no midi note mapping for this instrument
+        continue;
     }
+    $.writeln(`${instrument.name} playing at time ${time}`);
+    strikes.push({ seconds: 123, velocity, instrument });
 }
 
-// OK now we have strikes
-debugger;
+// OK now we have strikes, split them by instrument for now
+const strikeByInstrument = groupBy(strikes, 'instrument.name');
 
-// OK... sooooooo
-// we have midi data. but Ableton doesn't seem to export the tempo of the track.
-// that's fine we can just write it here.
+// Let's schedule a bunch of bass drum hits.
+// We need to specify where we can find all the hits.
+// The ideal is that every clip has markers for each thing.
+// maybe we say marker descriptions are CSVs
+
+debugger;
 
 const trackNr = 0;
 const clipNr = 0;
