@@ -61,18 +61,61 @@ const midi = {
   timeDivision: 96,
 };
 
+interface instrument {
+    name: string;
+}
+
+interface strike {
+    seconds: number;
+    velocity: number;
+    instrument: instrument;
+};
+
+const instruments = {
+    36: {
+        name: "bass drum",
+    },
+    38: {
+        name: "snare",
+    },
+    42: {
+        name: "closed hi-hat",
+    },
+}
+
+// deltaTime = 24 is a sixteenth note.
+
+const bpm = 100;
+// we insert by time, so we need something that'll just
+// bpm2wat
+
+
+const strikes: strike[] = [];
+
 const track = midi.track[0];
 let time = 0;
 for (let index = 0; index < track.event.length; index++) {
     const event = track.event[index];
+    time += event.deltaTime;
     if (event.type !== 9) {
         // filter out anything but note-on
         continue;
     }
     const note = event.data[0];
-    time += event.deltaTime;
-    $.writeln(note);
+    const velocity = event.data[1] as number;
+    const instrument = instruments[note];
+    if (instrument) {
+        $.writeln(`${instrument.name} playing at time ${time}`);
+        strikes.push({ seconds: 123, velocity, instrument });
+    }
 }
+
+// OK now we have strikes
+debugger;
+
+// OK... sooooooo
+// we have midi data. but Ableton doesn't seem to export the tempo of the track.
+// that's fine we can just write it here.
 
 const trackNr = 0;
 const clipNr = 0;
@@ -94,7 +137,9 @@ const clip = availableClips[2];
 const markers = clip.getMarkers();
 const marker: Marker = markers[1];
 $.writeln(marker.name);
+// marker.start.seconds
 
-debugger;
-// videoTrack.insertClip(clip, 0);
+videoTrack.insertClip(clip, 1);
+videoTrack.insertClip(clip, 2);
+videoTrack.insertClip(clip, 4);
 // videoTrack.insertClip(trackNr, trackNr);
