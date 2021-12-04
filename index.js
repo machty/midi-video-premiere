@@ -130,17 +130,14 @@ for (var index = 0; index < track.event.length; index++) {
         // no midi note mapping for this instrument
         continue;
     }
-    $.writeln("".concat(instrument.name, " playing at time ").concat(time));
+    // $.writeln(`${instrument.name} playing at time ${time}`);
     // 24 * 4 = number
     // 96 beats per second
     var seconds = time / 96;
     strikes.push({ seconds: seconds, velocity: velocity, instrument: instrument });
 }
-var trackNr = 0;
-var clipNr = 0;
 var seq = app.project.activeSequence;
 var videoTracks = seq.videoTracks;
-// Find all the instrument strike subclips
 var availableClips = app.project.rootItem.children;
 for (var ci = 0; ci < availableClips.numItems; ci++) {
     var clip = availableClips[ci];
@@ -157,22 +154,26 @@ for (var ci = 0; ci < availableClips.numItems; ci++) {
 }
 var strikesByInstrument = groupBy(strikes, 'instrument.shortName');
 var startingOffset = 5; // seconds
+var clipFramesBeforeMarker = 10; // hacky, but sidesteps the issue of markers having negative times
+var fps = 24;
+var clipSecondsBeforeBuffer = clipFramesBeforeMarker / fps;
 // forEach([bassDrum, snareDrum], (instrument: Instrument, trackIndex: number) => {
 forEach([bassDrum], function (instrument, trackIndex) {
     var videoTrack = videoTracks[trackIndex];
     var videoStrike = instrument.videoStrikes[0];
     var clip = videoStrike.clip, marker = videoStrike.marker;
-    debugger;
+    // clip.setStartTime()
     // marker.start.sec
     var midiStrikes = strikesByInstrument[instrument.shortName];
     if (!midiStrikes) {
         throw "wat";
     }
     forEach(midiStrikes, function (midiStrike, index) {
+        // marker.start.seconds is negative for subclips???
+        // so we use clipSecondsBeforeBuffer
         // const insertTime = startingOffset + midiStrike.seconds - marker.start.seconds;
-        var insertTime = startingOffset + midiStrike.seconds - marker.start.seconds;
-        videoTrack.insertClip(clip, insertTime);
-        debugger;
+        var insertTime = startingOffset + midiStrike.seconds - clipSecondsBeforeBuffer;
+        videoTrack.overwriteClip(clip, insertTime);
         $.writeln("".concat(instrument.name, ": midi strike: ").concat(insertTime));
     });
 });
