@@ -66,7 +66,283 @@ var midi = {
                     deltaTime: 0,
                     type: 9,
                     channel: 0,
-                    data: [42, 119]
+                    data: [36, 121]
+                },
+                {
+                    deltaTime: 24,
+                    type: 8,
+                    channel: 0,
+                    data: [36, 64]
+                },
+                {
+                    deltaTime: 24,
+                    type: 9,
+                    channel: 0,
+                    data: [42, 121]
+                },
+                {
+                    deltaTime: 24,
+                    type: 8,
+                    channel: 0,
+                    data: [42, 64]
+                },
+                {
+                    deltaTime: 24,
+                    type: 9,
+                    channel: 0,
+                    data: [42, 121]
+                },
+                {
+                    deltaTime: 24,
+                    type: 8,
+                    channel: 0,
+                    data: [42, 64]
+                },
+                {
+                    deltaTime: 24,
+                    type: 9,
+                    channel: 0,
+                    data: [42, 121]
+                },
+                {
+                    deltaTime: 24,
+                    type: 8,
+                    channel: 0,
+                    data: [42, 64]
+                },
+                {
+                    deltaTime: 24,
+                    type: 9,
+                    channel: 0,
+                    data: [38, 121]
+                },
+                {
+                    deltaTime: 24,
+                    type: 8,
+                    channel: 0,
+                    data: [38, 64]
+                },
+                {
+                    deltaTime: 24,
+                    type: 9,
+                    channel: 0,
+                    data: [42, 121]
+                },
+                {
+                    deltaTime: 24,
+                    type: 8,
+                    channel: 0,
+                    data: [42, 64]
+                },
+                {
+                    deltaTime: 24,
+                    type: 9,
+                    channel: 0,
+                    data: [42, 121]
+                },
+                {
+                    deltaTime: 24,
+                    type: 8,
+                    channel: 0,
+                    data: [42, 64]
+                },
+                {
+                    deltaTime: 24,
+                    type: 9,
+                    channel: 0,
+                    data: [36, 121]
+                },
+                {
+                    deltaTime: 24,
+                    type: 8,
+                    channel: 0,
+                    data: [36, 64]
+                },
+                {
+                    deltaTime: 24,
+                    type: 9,
+                    channel: 0,
+                    data: [36, 121]
+                },
+                {
+                    deltaTime: 24,
+                    type: 8,
+                    channel: 0,
+                    data: [36, 64]
+                },
+                {
+                    deltaTime: 24,
+                    type: 9,
+                    channel: 0,
+                    data: [42, 121]
+                },
+                {
+                    deltaTime: 24,
+                    type: 8,
+                    channel: 0,
+                    data: [42, 64]
+                },
+                {
+                    deltaTime: 24,
+                    type: 9,
+                    channel: 0,
+                    data: [36, 121]
+                },
+                {
+                    deltaTime: 24,
+                    type: 8,
+                    channel: 0,
+                    data: [36, 64]
+                },
+                {
+                    deltaTime: 24,
+                    type: 9,
+                    channel: 0,
+                    data: [42, 121]
+                },
+                {
+                    deltaTime: 24,
+                    type: 8,
+                    channel: 0,
+                    data: [42, 64]
+                },
+                {
+                    deltaTime: 24,
+                    type: 9,
+                    channel: 0,
+                    data: [38, 121]
+                },
+                {
+                    deltaTime: 24,
+                    type: 8,
+                    channel: 0,
+                    data: [38, 64]
+                },
+                {
+                    deltaTime: 24,
+                    type: 9,
+                    channel: 0,
+                    data: [42, 121]
+                },
+                {
+                    deltaTime: 24,
+                    type: 8,
+                    channel: 0,
+                    data: [42, 64]
+                },
+                {
+                    deltaTime: 24,
+                    type: 9,
+                    channel: 0,
+                    data: [42, 121]
+                },
+                {
+                    deltaTime: 24,
+                    type: 8,
+                    channel: 0,
+                    data: [42, 64]
+                },
+                {
+                    deltaTime: 24,
+                    type: 9,
+                    channel: 0,
+                    data: [42, 121]
+                },
+                {
+                    deltaTime: 24,
+                    type: 8,
+                    channel: 0,
+                    data: [42, 64]
+                },
+                {
+                    deltaTime: 24,
+                    type: 9,
+                    channel: 0,
+                    data: [36, 121]
+                },
+                {
+                    deltaTime: 24,
+                    type: 8,
+                    channel: 0,
+                    data: [36, 64]
+                },
+                {
+                    deltaTime: 0,
+                    type: 9,
+                    channel: 0,
+                    data: [36, 121]
+                },
+                {
+                    deltaTime: 24,
+                    type: 8,
+                    channel: 0,
+                    data: [36, 64]
+                },
+                {
+                    deltaTime: 0,
+                    type: 9,
+                    channel: 0,
+                    data: [36, 121]
+                },
+                {
+                    deltaTime: 24,
+                    type: 8,
+                    channel: 0,
+                    data: [36, 64]
+                },
+                {
+                    deltaTime: 0,
+                    type: 9,
+                    channel: 0,
+                    data: [36, 121]
+                },
+                {
+                    deltaTime: 24,
+                    type: 8,
+                    channel: 0,
+                    data: [36, 64]
+                },
+                {
+                    deltaTime: 0,
+                    type: 9,
+                    channel: 0,
+                    data: [36, 121]
+                },
+                {
+                    deltaTime: 24,
+                    type: 8,
+                    channel: 0,
+                    data: [36, 64]
+                },
+                {
+                    deltaTime: 0,
+                    type: 9,
+                    channel: 0,
+                    data: [36, 121]
+                },
+                {
+                    deltaTime: 24,
+                    type: 8,
+                    channel: 0,
+                    data: [36, 64]
+                },
+                {
+                    deltaTime: 0,
+                    type: 9,
+                    channel: 0,
+                    data: [36, 121]
+                },
+                {
+                    deltaTime: 24,
+                    type: 8,
+                    channel: 0,
+                    data: [36, 64]
+                },
+                {
+                    deltaTime: 0,
+                    type: 9,
+                    channel: 0,
+                    data: [42, 121]
                 },
                 {
                     deltaTime: 12,
@@ -75,22 +351,34 @@ var midi = {
                     data: [42, 64]
                 },
                 {
-                    deltaTime: 84,
+                    deltaTime: 0,
                     type: 9,
                     channel: 0,
-                    data: [42, 119]
+                    data: [42, 121]
                 },
                 {
                     deltaTime: 12,
+                    type: 9,
+                    channel: 0,
+                    data: [38, 122]
+                },
+                {
+                    deltaTime: 0,
                     type: 8,
                     channel: 0,
                     data: [42, 64]
                 },
                 {
-                    deltaTime: 84,
+                    deltaTime: 12,
+                    type: 8,
+                    channel: 0,
+                    data: [38, 64]
+                },
+                {
+                    deltaTime: 36,
                     type: 9,
                     channel: 0,
-                    data: [42, 119]
+                    data: [42, 122]
                 },
                 {
                     deltaTime: 12,
@@ -102,103 +390,7 @@ var midi = {
                     deltaTime: 36,
                     type: 9,
                     channel: 0,
-                    data: [42, 119]
-                },
-                {
-                    deltaTime: 12,
-                    type: 8,
-                    channel: 0,
-                    data: [42, 64]
-                },
-                {
-                    deltaTime: 36,
-                    type: 9,
-                    channel: 0,
-                    data: [42, 119]
-                },
-                {
-                    deltaTime: 12,
-                    type: 8,
-                    channel: 0,
-                    data: [42, 64]
-                },
-                {
-                    deltaTime: 36,
-                    type: 9,
-                    channel: 0,
-                    data: [42, 119]
-                },
-                {
-                    deltaTime: 12,
-                    type: 8,
-                    channel: 0,
-                    data: [42, 64]
-                },
-                {
-                    deltaTime: 36,
-                    type: 9,
-                    channel: 0,
-                    data: [36, 119]
-                },
-                {
-                    deltaTime: 12,
-                    type: 8,
-                    channel: 0,
-                    data: [36, 64]
-                },
-                {
-                    deltaTime: 12,
-                    type: 9,
-                    channel: 0,
-                    data: [42, 119]
-                },
-                {
-                    deltaTime: 12,
-                    type: 8,
-                    channel: 0,
-                    data: [42, 64]
-                },
-                {
-                    deltaTime: 12,
-                    type: 9,
-                    channel: 0,
-                    data: [38, 118]
-                },
-                {
-                    deltaTime: 12,
-                    type: 8,
-                    channel: 0,
-                    data: [38, 64]
-                },
-                {
-                    deltaTime: 12,
-                    type: 9,
-                    channel: 0,
-                    data: [42, 119]
-                },
-                {
-                    deltaTime: 12,
-                    type: 8,
-                    channel: 0,
-                    data: [42, 64]
-                },
-                {
-                    deltaTime: 12,
-                    type: 9,
-                    channel: 0,
-                    data: [36, 118]
-                },
-                {
-                    deltaTime: 12,
-                    type: 8,
-                    channel: 0,
-                    data: [36, 64]
-                },
-                {
-                    deltaTime: 12,
-                    type: 9,
-                    channel: 0,
-                    data: [42, 118]
+                    data: [42, 122]
                 },
                 {
                     deltaTime: 12,
@@ -210,13 +402,37 @@ var midi = {
                     deltaTime: 0,
                     type: 9,
                     channel: 0,
-                    data: [42, 118]
+                    data: [42, 122]
+                },
+                {
+                    deltaTime: 12,
+                    type: 8,
+                    channel: 0,
+                    data: [42, 64]
+                },
+                {
+                    deltaTime: 0,
+                    type: 9,
+                    channel: 0,
+                    data: [42, 122]
+                },
+                {
+                    deltaTime: 12,
+                    type: 8,
+                    channel: 0,
+                    data: [42, 64]
+                },
+                {
+                    deltaTime: 0,
+                    type: 9,
+                    channel: 0,
+                    data: [42, 122]
                 },
                 {
                     deltaTime: 12,
                     type: 9,
                     channel: 0,
-                    data: [38, 118]
+                    data: [38, 124]
                 },
                 {
                     deltaTime: 0,
@@ -231,250 +447,10 @@ var midi = {
                     data: [38, 64]
                 },
                 {
-                    deltaTime: 12,
-                    type: 9,
-                    channel: 0,
-                    data: [42, 118]
-                },
-                {
-                    deltaTime: 12,
-                    type: 8,
-                    channel: 0,
-                    data: [42, 64]
-                },
-                {
-                    deltaTime: 12,
-                    type: 9,
-                    channel: 0,
-                    data: [36, 118]
-                },
-                {
-                    deltaTime: 12,
-                    type: 8,
-                    channel: 0,
-                    data: [36, 64]
-                },
-                {
-                    deltaTime: 12,
-                    type: 9,
-                    channel: 0,
-                    data: [42, 118]
-                },
-                {
-                    deltaTime: 12,
-                    type: 8,
-                    channel: 0,
-                    data: [42, 64]
-                },
-                {
-                    deltaTime: 12,
-                    type: 9,
-                    channel: 0,
-                    data: [38, 119]
-                },
-                {
-                    deltaTime: 12,
-                    type: 8,
-                    channel: 0,
-                    data: [38, 64]
-                },
-                {
-                    deltaTime: 12,
-                    type: 9,
-                    channel: 0,
-                    data: [42, 119]
-                },
-                {
-                    deltaTime: 12,
-                    type: 8,
-                    channel: 0,
-                    data: [42, 64]
-                },
-                {
-                    deltaTime: 12,
-                    type: 9,
-                    channel: 0,
-                    data: [36, 119]
-                },
-                {
-                    deltaTime: 12,
-                    type: 8,
-                    channel: 0,
-                    data: [36, 64]
-                },
-                {
-                    deltaTime: 12,
-                    type: 9,
-                    channel: 0,
-                    data: [36, 120]
-                },
-                {
-                    deltaTime: 12,
-                    type: 8,
-                    channel: 0,
-                    data: [36, 64]
-                },
-                {
                     deltaTime: 0,
                     type: 9,
                     channel: 0,
-                    data: [36, 120]
-                },
-                {
-                    deltaTime: 12,
-                    type: 8,
-                    channel: 0,
-                    data: [36, 64]
-                },
-                {
-                    deltaTime: 0,
-                    type: 9,
-                    channel: 0,
-                    data: [38, 120]
-                },
-                {
-                    deltaTime: 12,
-                    type: 8,
-                    channel: 0,
-                    data: [38, 64]
-                },
-                {
-                    deltaTime: 12,
-                    type: 9,
-                    channel: 0,
-                    data: [42, 120]
-                },
-                {
-                    deltaTime: 12,
-                    type: 8,
-                    channel: 0,
-                    data: [42, 64]
-                },
-                {
-                    deltaTime: 12,
-                    type: 9,
-                    channel: 0,
-                    data: [36, 120]
-                },
-                {
-                    deltaTime: 12,
-                    type: 8,
-                    channel: 0,
-                    data: [36, 64]
-                },
-                {
-                    deltaTime: 12,
-                    type: 9,
-                    channel: 0,
-                    data: [42, 120]
-                },
-                {
-                    deltaTime: 12,
-                    type: 8,
-                    channel: 0,
-                    data: [42, 64]
-                },
-                {
-                    deltaTime: 12,
-                    type: 9,
-                    channel: 0,
-                    data: [38, 121]
-                },
-                {
-                    deltaTime: 12,
-                    type: 8,
-                    channel: 0,
-                    data: [38, 64]
-                },
-                {
-                    deltaTime: 12,
-                    type: 9,
-                    channel: 0,
-                    data: [42, 121]
-                },
-                {
-                    deltaTime: 12,
-                    type: 8,
-                    channel: 0,
-                    data: [42, 64]
-                },
-                {
-                    deltaTime: 12,
-                    type: 9,
-                    channel: 0,
-                    data: [36, 121]
-                },
-                {
-                    deltaTime: 12,
-                    type: 8,
-                    channel: 0,
-                    data: [36, 64]
-                },
-                {
-                    deltaTime: 12,
-                    type: 9,
-                    channel: 0,
-                    data: [42, 121]
-                },
-                {
-                    deltaTime: 12,
-                    type: 8,
-                    channel: 0,
-                    data: [42, 64]
-                },
-                {
-                    deltaTime: 0,
-                    type: 9,
-                    channel: 0,
-                    data: [42, 121]
-                },
-                {
-                    deltaTime: 12,
-                    type: 9,
-                    channel: 0,
-                    data: [38, 121]
-                },
-                {
-                    deltaTime: 0,
-                    type: 8,
-                    channel: 0,
-                    data: [42, 64]
-                },
-                {
-                    deltaTime: 12,
-                    type: 8,
-                    channel: 0,
-                    data: [38, 64]
-                },
-                {
-                    deltaTime: 12,
-                    type: 9,
-                    channel: 0,
-                    data: [36, 121]
-                },
-                {
-                    deltaTime: 12,
-                    type: 8,
-                    channel: 0,
-                    data: [36, 64]
-                },
-                {
-                    deltaTime: 0,
-                    type: 9,
-                    channel: 0,
-                    data: [36, 121]
-                },
-                {
-                    deltaTime: 12,
-                    type: 8,
-                    channel: 0,
-                    data: [36, 64]
-                },
-                {
-                    deltaTime: 0,
-                    type: 9,
-                    channel: 0,
-                    data: [38, 121]
+                    data: [38, 124]
                 },
                 {
                     deltaTime: 12,
@@ -486,13 +462,25 @@ var midi = {
                     deltaTime: 0,
                     type: 9,
                     channel: 0,
-                    data: [38, 121]
+                    data: [38, 124]
+                },
+                {
+                    deltaTime: 12,
+                    type: 8,
+                    channel: 0,
+                    data: [38, 64]
+                },
+                {
+                    deltaTime: 0,
+                    type: 9,
+                    channel: 0,
+                    data: [38, 124]
                 },
                 {
                     deltaTime: 12,
                     type: 9,
                     channel: 0,
-                    data: [36, 121]
+                    data: [36, 124]
                 },
                 {
                     deltaTime: 0,
@@ -510,7 +498,7 @@ var midi = {
                     deltaTime: 0,
                     type: 9,
                     channel: 0,
-                    data: [36, 121]
+                    data: [36, 124]
                 },
                 {
                     deltaTime: 12,
@@ -522,31 +510,7 @@ var midi = {
                     deltaTime: 0,
                     type: 9,
                     channel: 0,
-                    data: [42, 121]
-                },
-                {
-                    deltaTime: 12,
-                    type: 8,
-                    channel: 0,
-                    data: [42, 64]
-                },
-                {
-                    deltaTime: 0,
-                    type: 9,
-                    channel: 0,
-                    data: [42, 121]
-                },
-                {
-                    deltaTime: 12,
-                    type: 9,
-                    channel: 0,
-                    data: [36, 121]
-                },
-                {
-                    deltaTime: 0,
-                    type: 8,
-                    channel: 0,
-                    data: [42, 64]
+                    data: [36, 124]
                 },
                 {
                     deltaTime: 12,
@@ -558,7 +522,7 @@ var midi = {
                     deltaTime: 0,
                     type: 9,
                     channel: 0,
-                    data: [36, 121]
+                    data: [36, 124]
                 },
                 {
                     deltaTime: 12,
@@ -570,13 +534,97 @@ var midi = {
                     deltaTime: 0,
                     type: 9,
                     channel: 0,
-                    data: [38, 121]
+                    data: [36, 124]
+                },
+                {
+                    deltaTime: 12,
+                    type: 8,
+                    channel: 0,
+                    data: [36, 64]
+                },
+                {
+                    deltaTime: 0,
+                    type: 9,
+                    channel: 0,
+                    data: [36, 124]
+                },
+                {
+                    deltaTime: 12,
+                    type: 8,
+                    channel: 0,
+                    data: [36, 64]
+                },
+                {
+                    deltaTime: 0,
+                    type: 9,
+                    channel: 0,
+                    data: [36, 124]
+                },
+                {
+                    deltaTime: 12,
+                    type: 8,
+                    channel: 0,
+                    data: [36, 64]
+                },
+                {
+                    deltaTime: 0,
+                    type: 9,
+                    channel: 0,
+                    data: [36, 124]
+                },
+                {
+                    deltaTime: 12,
+                    type: 8,
+                    channel: 0,
+                    data: [36, 64]
+                },
+                {
+                    deltaTime: 0,
+                    type: 9,
+                    channel: 0,
+                    data: [38, 124]
+                },
+                {
+                    deltaTime: 12,
+                    type: 8,
+                    channel: 0,
+                    data: [38, 64]
+                },
+                {
+                    deltaTime: 0,
+                    type: 9,
+                    channel: 0,
+                    data: [38, 124]
+                },
+                {
+                    deltaTime: 12,
+                    type: 8,
+                    channel: 0,
+                    data: [38, 64]
+                },
+                {
+                    deltaTime: 0,
+                    type: 9,
+                    channel: 0,
+                    data: [38, 124]
+                },
+                {
+                    deltaTime: 12,
+                    type: 8,
+                    channel: 0,
+                    data: [38, 64]
+                },
+                {
+                    deltaTime: 0,
+                    type: 9,
+                    channel: 0,
+                    data: [38, 124]
                 },
                 {
                     deltaTime: 12,
                     type: 9,
                     channel: 0,
-                    data: [36, 121]
+                    data: [36, 123]
                 },
                 {
                     deltaTime: 0,
@@ -594,19 +642,7 @@ var midi = {
                     deltaTime: 0,
                     type: 9,
                     channel: 0,
-                    data: [38, 121]
-                },
-                {
-                    deltaTime: 12,
-                    type: 9,
-                    channel: 0,
-                    data: [36, 121]
-                },
-                {
-                    deltaTime: 0,
-                    type: 8,
-                    channel: 0,
-                    data: [38, 64]
+                    data: [36, 123]
                 },
                 {
                     deltaTime: 12,
@@ -618,19 +654,7 @@ var midi = {
                     deltaTime: 0,
                     type: 9,
                     channel: 0,
-                    data: [38, 121]
-                },
-                {
-                    deltaTime: 12,
-                    type: 9,
-                    channel: 0,
-                    data: [36, 121]
-                },
-                {
-                    deltaTime: 0,
-                    type: 8,
-                    channel: 0,
-                    data: [38, 64]
+                    data: [36, 123]
                 },
                 {
                     deltaTime: 12,
@@ -642,19 +666,7 @@ var midi = {
                     deltaTime: 0,
                     type: 9,
                     channel: 0,
-                    data: [38, 121]
-                },
-                {
-                    deltaTime: 12,
-                    type: 9,
-                    channel: 0,
-                    data: [36, 121]
-                },
-                {
-                    deltaTime: 0,
-                    type: 8,
-                    channel: 0,
-                    data: [38, 64]
+                    data: [36, 123]
                 },
                 {
                     deltaTime: 12,
@@ -666,25 +678,13 @@ var midi = {
                     deltaTime: 0,
                     type: 9,
                     channel: 0,
-                    data: [38, 121]
+                    data: [38, 124]
                 },
                 {
                     deltaTime: 12,
                     type: 8,
                     channel: 0,
                     data: [38, 64]
-                },
-                {
-                    deltaTime: 180,
-                    type: 9,
-                    channel: 0,
-                    data: [42, 121]
-                },
-                {
-                    deltaTime: 12,
-                    type: 8,
-                    channel: 0,
-                    data: [42, 64]
                 },
                 {
                     deltaTime: 0,
@@ -828,7 +828,9 @@ function assembleVirtualTrack(instruments) {
     };
     return virtualTrack;
 }
-var virtualTracks = [assembleVirtualTrack([bassDrum, snareDrum, hiHatClosed])];
+var virtualTracks = [
+    assembleVirtualTrack([bassDrum, snareDrum, hiHatClosed]),
+];
 // Create a VirtualTrack for each instrument.
 // Implement simple intersection-resolution algo.
 // Note: even though we're scoping to a single instrument's video tracks, we should
