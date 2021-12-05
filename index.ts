@@ -50,84 +50,653 @@ const midi = {
   track: [
     {
       event: [
-        { deltaTime: 0, type: 255, metaType: 3, data: "\u0000" },
-        { deltaTime: 0, type: 255, metaType: 88, data: [1, 2, 36, 8] },
-        { deltaTime: 0, type: 255, metaType: 88, data: [1, 2, 36, 8] },
-        { deltaTime: 0, type: 9, channel: 0, data: [36, 127] },
-        { deltaTime: 24, type: 8, channel: 0, data: [36, 64] },
-        { deltaTime: 72, type: 9, channel: 0, data: [36, 127] },
-        { deltaTime: 24, type: 8, channel: 0, data: [36, 64] },
-        { deltaTime: 72, type: 9, channel: 0, data: [36, 127] },
-        { deltaTime: 24, type: 8, channel: 0, data: [36, 64] },
-        { deltaTime: 24, type: 9, channel: 0, data: [36, 127] },
-        { deltaTime: 24, type: 8, channel: 0, data: [36, 64] },
-        { deltaTime: 24, type: 9, channel: 0, data: [36, 127] },
-        { deltaTime: 24, type: 8, channel: 0, data: [36, 64] },
-        { deltaTime: 24, type: 9, channel: 0, data: [36, 127] },
-        { deltaTime: 24, type: 8, channel: 0, data: [36, 64] },
-        { deltaTime: 24, type: 9, channel: 0, data: [36, 127] },
-        { deltaTime: 16, type: 8, channel: 0, data: [36, 64] },
-        { deltaTime: 16, type: 9, channel: 0, data: [36, 127] },
-        { deltaTime: 16, type: 8, channel: 0, data: [36, 64] },
-        { deltaTime: 16, type: 9, channel: 0, data: [36, 127] },
-        { deltaTime: 16, type: 8, channel: 0, data: [36, 64] },
-        { deltaTime: 16, type: 9, channel: 0, data: [36, 127] },
-        { deltaTime: 16, type: 8, channel: 0, data: [36, 64] },
-        { deltaTime: 16, type: 9, channel: 0, data: [36, 127] },
-        { deltaTime: 16, type: 8, channel: 0, data: [36, 64] },
-        { deltaTime: 16, type: 9, channel: 0, data: [36, 127] },
-        { deltaTime: 16, type: 8, channel: 0, data: [36, 64] },
-        { deltaTime: 16, type: 9, channel: 0, data: [36, 124] },
-        { deltaTime: 24, type: 8, channel: 0, data: [36, 64] },
-        { deltaTime: 0, type: 9, channel: 0, data: [36, 124] },
-        { deltaTime: 24, type: 8, channel: 0, data: [36, 64] },
-        { deltaTime: 0, type: 9, channel: 0, data: [36, 124] },
-        { deltaTime: 24, type: 8, channel: 0, data: [36, 64] },
-        { deltaTime: 0, type: 9, channel: 0, data: [36, 124] },
-        { deltaTime: 24, type: 8, channel: 0, data: [36, 64] },
-        { deltaTime: 0, type: 9, channel: 0, data: [36, 124] },
-        { deltaTime: 24, type: 8, channel: 0, data: [36, 64] },
-        { deltaTime: 0, type: 9, channel: 0, data: [36, 124] },
-        { deltaTime: 24, type: 8, channel: 0, data: [36, 64] },
-        { deltaTime: 0, type: 9, channel: 0, data: [36, 124] },
-        { deltaTime: 24, type: 8, channel: 0, data: [36, 64] },
-        { deltaTime: 0, type: 9, channel: 0, data: [36, 124] },
-        { deltaTime: 24, type: 8, channel: 0, data: [36, 64] },
-        { deltaTime: 0, type: 9, channel: 0, data: [36, 120] },
-        { deltaTime: 12, type: 8, channel: 0, data: [36, 64] },
-        { deltaTime: 0, type: 9, channel: 0, data: [36, 120] },
-        { deltaTime: 12, type: 8, channel: 0, data: [36, 64] },
-        { deltaTime: 0, type: 9, channel: 0, data: [36, 120] },
-        { deltaTime: 12, type: 8, channel: 0, data: [36, 64] },
-        { deltaTime: 0, type: 9, channel: 0, data: [36, 120] },
-        { deltaTime: 12, type: 8, channel: 0, data: [36, 64] },
-        { deltaTime: 0, type: 9, channel: 0, data: [36, 120] },
-        { deltaTime: 12, type: 8, channel: 0, data: [36, 64] },
-        { deltaTime: 0, type: 9, channel: 0, data: [36, 120] },
-        { deltaTime: 12, type: 8, channel: 0, data: [36, 64] },
-        { deltaTime: 0, type: 9, channel: 0, data: [36, 120] },
-        { deltaTime: 12, type: 8, channel: 0, data: [36, 64] },
-        { deltaTime: 0, type: 9, channel: 0, data: [36, 120] },
-        { deltaTime: 12, type: 8, channel: 0, data: [36, 64] },
-        { deltaTime: 0, type: 9, channel: 0, data: [36, 120] },
-        { deltaTime: 12, type: 8, channel: 0, data: [36, 64] },
-        { deltaTime: 0, type: 9, channel: 0, data: [36, 120] },
-        { deltaTime: 12, type: 8, channel: 0, data: [36, 64] },
-        { deltaTime: 0, type: 9, channel: 0, data: [36, 120] },
-        { deltaTime: 12, type: 8, channel: 0, data: [36, 64] },
-        { deltaTime: 0, type: 9, channel: 0, data: [36, 120] },
-        { deltaTime: 12, type: 8, channel: 0, data: [36, 64] },
-        { deltaTime: 0, type: 9, channel: 0, data: [36, 120] },
-        { deltaTime: 12, type: 8, channel: 0, data: [36, 64] },
-        { deltaTime: 0, type: 9, channel: 0, data: [36, 120] },
-        { deltaTime: 12, type: 8, channel: 0, data: [36, 64] },
-        { deltaTime: 0, type: 9, channel: 0, data: [36, 120] },
-        { deltaTime: 12, type: 8, channel: 0, data: [36, 64] },
-        { deltaTime: 0, type: 9, channel: 0, data: [36, 120] },
-        { deltaTime: 12, type: 8, channel: 0, data: [36, 64] },
-        { deltaTime: 0, type: 9, channel: 0, data: [36, 120] },
-        { deltaTime: 12, type: 8, channel: 0, data: [36, 64] },
-        { deltaTime: 0, type: 255, metaType: 47 },
+        {
+          deltaTime: 0,
+          type: 255,
+          metaType: 3,
+          data: "\u0000",
+        },
+        {
+          deltaTime: 0,
+          type: 255,
+          metaType: 88,
+          data: [1, 2, 36, 8],
+        },
+        {
+          deltaTime: 0,
+          type: 255,
+          metaType: 88,
+          data: [1, 2, 36, 8],
+        },
+        {
+          deltaTime: 0,
+          type: 9,
+          channel: 0,
+          data: [42, 119],
+        },
+        {
+          deltaTime: 12,
+          type: 8,
+          channel: 0,
+          data: [42, 64],
+        },
+        {
+          deltaTime: 84,
+          type: 9,
+          channel: 0,
+          data: [42, 119],
+        },
+        {
+          deltaTime: 12,
+          type: 8,
+          channel: 0,
+          data: [42, 64],
+        },
+        {
+          deltaTime: 84,
+          type: 9,
+          channel: 0,
+          data: [42, 119],
+        },
+        {
+          deltaTime: 12,
+          type: 8,
+          channel: 0,
+          data: [42, 64],
+        },
+        {
+          deltaTime: 36,
+          type: 9,
+          channel: 0,
+          data: [42, 119],
+        },
+        {
+          deltaTime: 12,
+          type: 8,
+          channel: 0,
+          data: [42, 64],
+        },
+        {
+          deltaTime: 36,
+          type: 9,
+          channel: 0,
+          data: [42, 119],
+        },
+        {
+          deltaTime: 12,
+          type: 8,
+          channel: 0,
+          data: [42, 64],
+        },
+        {
+          deltaTime: 36,
+          type: 9,
+          channel: 0,
+          data: [42, 119],
+        },
+        {
+          deltaTime: 12,
+          type: 8,
+          channel: 0,
+          data: [42, 64],
+        },
+        {
+          deltaTime: 36,
+          type: 9,
+          channel: 0,
+          data: [36, 119],
+        },
+        {
+          deltaTime: 12,
+          type: 8,
+          channel: 0,
+          data: [36, 64],
+        },
+        {
+          deltaTime: 12,
+          type: 9,
+          channel: 0,
+          data: [42, 119],
+        },
+        {
+          deltaTime: 12,
+          type: 8,
+          channel: 0,
+          data: [42, 64],
+        },
+        {
+          deltaTime: 12,
+          type: 9,
+          channel: 0,
+          data: [38, 118],
+        },
+        {
+          deltaTime: 12,
+          type: 8,
+          channel: 0,
+          data: [38, 64],
+        },
+        {
+          deltaTime: 12,
+          type: 9,
+          channel: 0,
+          data: [42, 119],
+        },
+        {
+          deltaTime: 12,
+          type: 8,
+          channel: 0,
+          data: [42, 64],
+        },
+        {
+          deltaTime: 12,
+          type: 9,
+          channel: 0,
+          data: [36, 118],
+        },
+        {
+          deltaTime: 12,
+          type: 8,
+          channel: 0,
+          data: [36, 64],
+        },
+        {
+          deltaTime: 12,
+          type: 9,
+          channel: 0,
+          data: [42, 118],
+        },
+        {
+          deltaTime: 12,
+          type: 8,
+          channel: 0,
+          data: [42, 64],
+        },
+        {
+          deltaTime: 0,
+          type: 9,
+          channel: 0,
+          data: [42, 118],
+        },
+        {
+          deltaTime: 12,
+          type: 9,
+          channel: 0,
+          data: [38, 118],
+        },
+        {
+          deltaTime: 0,
+          type: 8,
+          channel: 0,
+          data: [42, 64],
+        },
+        {
+          deltaTime: 12,
+          type: 8,
+          channel: 0,
+          data: [38, 64],
+        },
+        {
+          deltaTime: 12,
+          type: 9,
+          channel: 0,
+          data: [42, 118],
+        },
+        {
+          deltaTime: 12,
+          type: 8,
+          channel: 0,
+          data: [42, 64],
+        },
+        {
+          deltaTime: 12,
+          type: 9,
+          channel: 0,
+          data: [36, 118],
+        },
+        {
+          deltaTime: 12,
+          type: 8,
+          channel: 0,
+          data: [36, 64],
+        },
+        {
+          deltaTime: 12,
+          type: 9,
+          channel: 0,
+          data: [42, 118],
+        },
+        {
+          deltaTime: 12,
+          type: 8,
+          channel: 0,
+          data: [42, 64],
+        },
+        {
+          deltaTime: 12,
+          type: 9,
+          channel: 0,
+          data: [38, 119],
+        },
+        {
+          deltaTime: 12,
+          type: 8,
+          channel: 0,
+          data: [38, 64],
+        },
+        {
+          deltaTime: 12,
+          type: 9,
+          channel: 0,
+          data: [42, 119],
+        },
+        {
+          deltaTime: 12,
+          type: 8,
+          channel: 0,
+          data: [42, 64],
+        },
+        {
+          deltaTime: 12,
+          type: 9,
+          channel: 0,
+          data: [36, 119],
+        },
+        {
+          deltaTime: 12,
+          type: 8,
+          channel: 0,
+          data: [36, 64],
+        },
+        {
+          deltaTime: 12,
+          type: 9,
+          channel: 0,
+          data: [36, 120],
+        },
+        {
+          deltaTime: 12,
+          type: 8,
+          channel: 0,
+          data: [36, 64],
+        },
+        {
+          deltaTime: 0,
+          type: 9,
+          channel: 0,
+          data: [36, 120],
+        },
+        {
+          deltaTime: 12,
+          type: 8,
+          channel: 0,
+          data: [36, 64],
+        },
+        {
+          deltaTime: 0,
+          type: 9,
+          channel: 0,
+          data: [38, 120],
+        },
+        {
+          deltaTime: 12,
+          type: 8,
+          channel: 0,
+          data: [38, 64],
+        },
+        {
+          deltaTime: 12,
+          type: 9,
+          channel: 0,
+          data: [42, 120],
+        },
+        {
+          deltaTime: 12,
+          type: 8,
+          channel: 0,
+          data: [42, 64],
+        },
+        {
+          deltaTime: 12,
+          type: 9,
+          channel: 0,
+          data: [36, 120],
+        },
+        {
+          deltaTime: 12,
+          type: 8,
+          channel: 0,
+          data: [36, 64],
+        },
+        {
+          deltaTime: 12,
+          type: 9,
+          channel: 0,
+          data: [42, 120],
+        },
+        {
+          deltaTime: 12,
+          type: 8,
+          channel: 0,
+          data: [42, 64],
+        },
+        {
+          deltaTime: 12,
+          type: 9,
+          channel: 0,
+          data: [38, 121],
+        },
+        {
+          deltaTime: 12,
+          type: 8,
+          channel: 0,
+          data: [38, 64],
+        },
+        {
+          deltaTime: 12,
+          type: 9,
+          channel: 0,
+          data: [42, 121],
+        },
+        {
+          deltaTime: 12,
+          type: 8,
+          channel: 0,
+          data: [42, 64],
+        },
+        {
+          deltaTime: 12,
+          type: 9,
+          channel: 0,
+          data: [36, 121],
+        },
+        {
+          deltaTime: 12,
+          type: 8,
+          channel: 0,
+          data: [36, 64],
+        },
+        {
+          deltaTime: 12,
+          type: 9,
+          channel: 0,
+          data: [42, 121],
+        },
+        {
+          deltaTime: 12,
+          type: 8,
+          channel: 0,
+          data: [42, 64],
+        },
+        {
+          deltaTime: 0,
+          type: 9,
+          channel: 0,
+          data: [42, 121],
+        },
+        {
+          deltaTime: 12,
+          type: 9,
+          channel: 0,
+          data: [38, 121],
+        },
+        {
+          deltaTime: 0,
+          type: 8,
+          channel: 0,
+          data: [42, 64],
+        },
+        {
+          deltaTime: 12,
+          type: 8,
+          channel: 0,
+          data: [38, 64],
+        },
+        {
+          deltaTime: 12,
+          type: 9,
+          channel: 0,
+          data: [36, 121],
+        },
+        {
+          deltaTime: 12,
+          type: 8,
+          channel: 0,
+          data: [36, 64],
+        },
+        {
+          deltaTime: 0,
+          type: 9,
+          channel: 0,
+          data: [36, 121],
+        },
+        {
+          deltaTime: 12,
+          type: 8,
+          channel: 0,
+          data: [36, 64],
+        },
+        {
+          deltaTime: 0,
+          type: 9,
+          channel: 0,
+          data: [38, 121],
+        },
+        {
+          deltaTime: 12,
+          type: 8,
+          channel: 0,
+          data: [38, 64],
+        },
+        {
+          deltaTime: 0,
+          type: 9,
+          channel: 0,
+          data: [38, 121],
+        },
+        {
+          deltaTime: 12,
+          type: 9,
+          channel: 0,
+          data: [36, 121],
+        },
+        {
+          deltaTime: 0,
+          type: 8,
+          channel: 0,
+          data: [38, 64],
+        },
+        {
+          deltaTime: 12,
+          type: 8,
+          channel: 0,
+          data: [36, 64],
+        },
+        {
+          deltaTime: 0,
+          type: 9,
+          channel: 0,
+          data: [36, 121],
+        },
+        {
+          deltaTime: 12,
+          type: 8,
+          channel: 0,
+          data: [36, 64],
+        },
+        {
+          deltaTime: 0,
+          type: 9,
+          channel: 0,
+          data: [42, 121],
+        },
+        {
+          deltaTime: 12,
+          type: 8,
+          channel: 0,
+          data: [42, 64],
+        },
+        {
+          deltaTime: 0,
+          type: 9,
+          channel: 0,
+          data: [42, 121],
+        },
+        {
+          deltaTime: 12,
+          type: 9,
+          channel: 0,
+          data: [36, 121],
+        },
+        {
+          deltaTime: 0,
+          type: 8,
+          channel: 0,
+          data: [42, 64],
+        },
+        {
+          deltaTime: 12,
+          type: 8,
+          channel: 0,
+          data: [36, 64],
+        },
+        {
+          deltaTime: 0,
+          type: 9,
+          channel: 0,
+          data: [36, 121],
+        },
+        {
+          deltaTime: 12,
+          type: 8,
+          channel: 0,
+          data: [36, 64],
+        },
+        {
+          deltaTime: 0,
+          type: 9,
+          channel: 0,
+          data: [38, 121],
+        },
+        {
+          deltaTime: 12,
+          type: 9,
+          channel: 0,
+          data: [36, 121],
+        },
+        {
+          deltaTime: 0,
+          type: 8,
+          channel: 0,
+          data: [38, 64],
+        },
+        {
+          deltaTime: 12,
+          type: 8,
+          channel: 0,
+          data: [36, 64],
+        },
+        {
+          deltaTime: 0,
+          type: 9,
+          channel: 0,
+          data: [38, 121],
+        },
+        {
+          deltaTime: 12,
+          type: 9,
+          channel: 0,
+          data: [36, 121],
+        },
+        {
+          deltaTime: 0,
+          type: 8,
+          channel: 0,
+          data: [38, 64],
+        },
+        {
+          deltaTime: 12,
+          type: 8,
+          channel: 0,
+          data: [36, 64],
+        },
+        {
+          deltaTime: 0,
+          type: 9,
+          channel: 0,
+          data: [38, 121],
+        },
+        {
+          deltaTime: 12,
+          type: 9,
+          channel: 0,
+          data: [36, 121],
+        },
+        {
+          deltaTime: 0,
+          type: 8,
+          channel: 0,
+          data: [38, 64],
+        },
+        {
+          deltaTime: 12,
+          type: 8,
+          channel: 0,
+          data: [36, 64],
+        },
+        {
+          deltaTime: 0,
+          type: 9,
+          channel: 0,
+          data: [38, 121],
+        },
+        {
+          deltaTime: 12,
+          type: 9,
+          channel: 0,
+          data: [36, 121],
+        },
+        {
+          deltaTime: 0,
+          type: 8,
+          channel: 0,
+          data: [38, 64],
+        },
+        {
+          deltaTime: 12,
+          type: 8,
+          channel: 0,
+          data: [36, 64],
+        },
+        {
+          deltaTime: 0,
+          type: 9,
+          channel: 0,
+          data: [38, 121],
+        },
+        {
+          deltaTime: 12,
+          type: 8,
+          channel: 0,
+          data: [38, 64],
+        },
+        {
+          deltaTime: 180,
+          type: 9,
+          channel: 0,
+          data: [42, 121],
+        },
+        {
+          deltaTime: 12,
+          type: 8,
+          channel: 0,
+          data: [42, 64],
+        },
+        {
+          deltaTime: 0,
+          type: 255,
+          metaType: 47,
+        },
       ],
     },
   ],
@@ -255,13 +824,35 @@ interface VirtualTrack {
   virtualClips: VirtualClipInstance[];
 }
 
-// Create a VirtualTrack for each instrument.
-// Implement simple intersection-resolution algo.
-// Note: even though we're scoping to a single instrument's video tracks, we should
-// generalize this so that the clips stitched-together could come from a variety of instruments.
-const virtualTracks: VirtualTrack[] = map(
-  [bassDrum],
-  (instrument: Instrument) => {
+// resolves overlaps, computes before/afterSeconds on clips
+function scheduleVirtualClips(virtualClips: VirtualClipInstance[]) {
+  for (let index = 0; index < virtualClips.length; index++) {
+    const clip0: VirtualClipInstance = virtualClips[index];
+    const clip1: VirtualClipInstance = virtualClips[index + 1];
+
+    if (clip1) {
+      // limit the end time of clip0;
+      // we don't know the real end time.
+      const timeBetweenStrikes = clip1.strikeAtSeconds - clip0.strikeAtSeconds;
+      const clip1videoStart = clip1.strikeAtSeconds - clip1.beforeSeconds;
+      const midpointBetweenStrikes =
+        clip0.strikeAtSeconds + timeBetweenStrikes / 2;
+      if (clip1videoStart < midpointBetweenStrikes) {
+        // If clip1's video starts before midpoint, then
+        // make clip0 end at midpoint and and make clip1 start at midpoint
+        clip0.afterSeconds = midpointBetweenStrikes - clip0.strikeAtSeconds;
+        clip1.beforeSeconds = clip1.strikeAtSeconds - midpointBetweenStrikes;
+      } else {
+        // Otherwise, no need to change clip1's start time, but clip0 should end at clip0.start
+        clip0.afterSeconds = clip1videoStart - clip0.strikeAtSeconds;
+      }
+    }
+  }
+}
+
+function assembleVirtualTrack(instruments: Instrument[]) {
+  let allVirtualClips: VirtualClipInstance[] = [];
+  forEach(instruments, (instrument: Instrument) => {
     const midiStrikes = strikesByInstrument[instrument.shortName];
 
     const virtualClips: VirtualClipInstance[] = map(
@@ -274,38 +865,59 @@ const virtualTracks: VirtualTrack[] = map(
         return newClip;
       }
     );
+    allVirtualClips.push(...virtualClips);
+  });
 
-    for (let index = 0; index < virtualClips.length; index++) {
-      const clip0: VirtualClipInstance = virtualClips[index];
-      const clip1: VirtualClipInstance = virtualClips[index + 1];
-
-      if (clip1) {
-        // limit the end time of clip0;
-        // we don't know the real end time.
-        const timeBetweenStrikes =
-          clip1.strikeAtSeconds - clip0.strikeAtSeconds;
-        const clip1videoStart = clip1.strikeAtSeconds - clip1.beforeSeconds;
-        const midpointBetweenStrikes =
-          clip0.strikeAtSeconds + timeBetweenStrikes / 2;
-        if (clip1videoStart < midpointBetweenStrikes) {
-          // If clip1's video starts before midpoint, then
-          // make clip0 end at midpoint and and make clip1 start at midpoint
-          clip0.afterSeconds = midpointBetweenStrikes - clip0.strikeAtSeconds;
-          clip1.beforeSeconds = clip1.strikeAtSeconds - midpointBetweenStrikes;
-        } else {
-          // Otherwise, no need to change clip1's start time, but clip0 should end at clip0.start
-          clip0.afterSeconds = clip1videoStart - clip0.strikeAtSeconds;
-        }
-      }
+  allVirtualClips = allVirtualClips.sort((a, b) => {
+    if (a.strikeAtSeconds < b.strikeAtSeconds) {
+      return -1;
+    } else if (a.strikeAtSeconds > b.strikeAtSeconds) {
+      return 1;
+    } else {
+      return 0;
     }
+  });
 
-    const virtualTrack: VirtualTrack = {
-      virtualClips: virtualClips,
-    };
+  scheduleVirtualClips(allVirtualClips);
 
-    return virtualTrack;
-  }
-);
+  const virtualTrack: VirtualTrack = {
+    virtualClips: allVirtualClips,
+  };
+
+  return virtualTrack;
+}
+
+const virtualTracks: VirtualTrack[] = [assembleVirtualTrack([bassDrum, snareDrum, hiHatClosed])];
+
+// Create a VirtualTrack for each instrument.
+// Implement simple intersection-resolution algo.
+// Note: even though we're scoping to a single instrument's video tracks, we should
+// generalize this so that the clips stitched-together could come from a variety of instruments.
+// const virtualTracks: VirtualTrack[] = map(
+//   [bassDrum, hiHatClosed, snareDrum],
+//   (instrument: Instrument) => {
+//     const midiStrikes = strikesByInstrument[instrument.shortName];
+
+//     const virtualClips: VirtualClipInstance[] = map(
+//       midiStrikes,
+//       (midiStrike: MidiStrike) => {
+//         const newClip: VirtualClipInstance = new VirtualClipInstance(
+//           midiStrike,
+//           instrument.videoStrikes[0]
+//         );
+//         return newClip;
+//       }
+//     );
+
+//     scheduleVirtualClips(virtualClips);
+
+//     const virtualTrack: VirtualTrack = {
+//       virtualClips: virtualClips,
+//     };
+
+//     return virtualTrack;
+//   }
+// );
 
 forEach(virtualTracks, (virtualTrack: VirtualTrack, trackIndex: number) => {
   const videoTrack = videoTracks[trackIndex];
@@ -329,6 +941,11 @@ forEach(virtualTracks, (virtualTrack: VirtualTrack, trackIndex: number) => {
         virtualClip.afterSeconds +
         STARTING_OFFSET;
 
+      const duration = clipEnd - clipStart;
+      $.writeln(
+        `${instrument.name}: midi strike: ${clipStart} - ${clipEnd}, duration: ${duration}`
+      );
+
       videoTrack.overwriteClip(clip, clipStart);
       // grab the clip instance we just added to the sequence
       const clipInstance = videoTrack.clips[clipIndex] as TrackItem;
@@ -339,10 +956,6 @@ forEach(virtualTracks, (virtualTrack: VirtualTrack, trackIndex: number) => {
         // when it is, we need to add it to the inPoint so that the clip starts _later_
         clipInstance.inPoint = clipInstance.inPoint.seconds + delta;
       }
-      const duration = clipEnd - clipStart;
-      $.writeln(
-        `${instrument.name}: midi strike: ${clipStart} - ${clipEnd}, duration: ${duration}`
-      );
     }
   );
 });

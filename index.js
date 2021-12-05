@@ -44,84 +44,653 @@ var midi = {
     track: [
         {
             event: [
-                { deltaTime: 0, type: 255, metaType: 3, data: "\u0000" },
-                { deltaTime: 0, type: 255, metaType: 88, data: [1, 2, 36, 8] },
-                { deltaTime: 0, type: 255, metaType: 88, data: [1, 2, 36, 8] },
-                { deltaTime: 0, type: 9, channel: 0, data: [36, 127] },
-                { deltaTime: 24, type: 8, channel: 0, data: [36, 64] },
-                { deltaTime: 72, type: 9, channel: 0, data: [36, 127] },
-                { deltaTime: 24, type: 8, channel: 0, data: [36, 64] },
-                { deltaTime: 72, type: 9, channel: 0, data: [36, 127] },
-                { deltaTime: 24, type: 8, channel: 0, data: [36, 64] },
-                { deltaTime: 24, type: 9, channel: 0, data: [36, 127] },
-                { deltaTime: 24, type: 8, channel: 0, data: [36, 64] },
-                { deltaTime: 24, type: 9, channel: 0, data: [36, 127] },
-                { deltaTime: 24, type: 8, channel: 0, data: [36, 64] },
-                { deltaTime: 24, type: 9, channel: 0, data: [36, 127] },
-                { deltaTime: 24, type: 8, channel: 0, data: [36, 64] },
-                { deltaTime: 24, type: 9, channel: 0, data: [36, 127] },
-                { deltaTime: 16, type: 8, channel: 0, data: [36, 64] },
-                { deltaTime: 16, type: 9, channel: 0, data: [36, 127] },
-                { deltaTime: 16, type: 8, channel: 0, data: [36, 64] },
-                { deltaTime: 16, type: 9, channel: 0, data: [36, 127] },
-                { deltaTime: 16, type: 8, channel: 0, data: [36, 64] },
-                { deltaTime: 16, type: 9, channel: 0, data: [36, 127] },
-                { deltaTime: 16, type: 8, channel: 0, data: [36, 64] },
-                { deltaTime: 16, type: 9, channel: 0, data: [36, 127] },
-                { deltaTime: 16, type: 8, channel: 0, data: [36, 64] },
-                { deltaTime: 16, type: 9, channel: 0, data: [36, 127] },
-                { deltaTime: 16, type: 8, channel: 0, data: [36, 64] },
-                { deltaTime: 16, type: 9, channel: 0, data: [36, 124] },
-                { deltaTime: 24, type: 8, channel: 0, data: [36, 64] },
-                { deltaTime: 0, type: 9, channel: 0, data: [36, 124] },
-                { deltaTime: 24, type: 8, channel: 0, data: [36, 64] },
-                { deltaTime: 0, type: 9, channel: 0, data: [36, 124] },
-                { deltaTime: 24, type: 8, channel: 0, data: [36, 64] },
-                { deltaTime: 0, type: 9, channel: 0, data: [36, 124] },
-                { deltaTime: 24, type: 8, channel: 0, data: [36, 64] },
-                { deltaTime: 0, type: 9, channel: 0, data: [36, 124] },
-                { deltaTime: 24, type: 8, channel: 0, data: [36, 64] },
-                { deltaTime: 0, type: 9, channel: 0, data: [36, 124] },
-                { deltaTime: 24, type: 8, channel: 0, data: [36, 64] },
-                { deltaTime: 0, type: 9, channel: 0, data: [36, 124] },
-                { deltaTime: 24, type: 8, channel: 0, data: [36, 64] },
-                { deltaTime: 0, type: 9, channel: 0, data: [36, 124] },
-                { deltaTime: 24, type: 8, channel: 0, data: [36, 64] },
-                { deltaTime: 0, type: 9, channel: 0, data: [36, 120] },
-                { deltaTime: 12, type: 8, channel: 0, data: [36, 64] },
-                { deltaTime: 0, type: 9, channel: 0, data: [36, 120] },
-                { deltaTime: 12, type: 8, channel: 0, data: [36, 64] },
-                { deltaTime: 0, type: 9, channel: 0, data: [36, 120] },
-                { deltaTime: 12, type: 8, channel: 0, data: [36, 64] },
-                { deltaTime: 0, type: 9, channel: 0, data: [36, 120] },
-                { deltaTime: 12, type: 8, channel: 0, data: [36, 64] },
-                { deltaTime: 0, type: 9, channel: 0, data: [36, 120] },
-                { deltaTime: 12, type: 8, channel: 0, data: [36, 64] },
-                { deltaTime: 0, type: 9, channel: 0, data: [36, 120] },
-                { deltaTime: 12, type: 8, channel: 0, data: [36, 64] },
-                { deltaTime: 0, type: 9, channel: 0, data: [36, 120] },
-                { deltaTime: 12, type: 8, channel: 0, data: [36, 64] },
-                { deltaTime: 0, type: 9, channel: 0, data: [36, 120] },
-                { deltaTime: 12, type: 8, channel: 0, data: [36, 64] },
-                { deltaTime: 0, type: 9, channel: 0, data: [36, 120] },
-                { deltaTime: 12, type: 8, channel: 0, data: [36, 64] },
-                { deltaTime: 0, type: 9, channel: 0, data: [36, 120] },
-                { deltaTime: 12, type: 8, channel: 0, data: [36, 64] },
-                { deltaTime: 0, type: 9, channel: 0, data: [36, 120] },
-                { deltaTime: 12, type: 8, channel: 0, data: [36, 64] },
-                { deltaTime: 0, type: 9, channel: 0, data: [36, 120] },
-                { deltaTime: 12, type: 8, channel: 0, data: [36, 64] },
-                { deltaTime: 0, type: 9, channel: 0, data: [36, 120] },
-                { deltaTime: 12, type: 8, channel: 0, data: [36, 64] },
-                { deltaTime: 0, type: 9, channel: 0, data: [36, 120] },
-                { deltaTime: 12, type: 8, channel: 0, data: [36, 64] },
-                { deltaTime: 0, type: 9, channel: 0, data: [36, 120] },
-                { deltaTime: 12, type: 8, channel: 0, data: [36, 64] },
-                { deltaTime: 0, type: 9, channel: 0, data: [36, 120] },
-                { deltaTime: 12, type: 8, channel: 0, data: [36, 64] },
-                { deltaTime: 0, type: 9, channel: 0, data: [36, 120] },
-                { deltaTime: 12, type: 8, channel: 0, data: [36, 64] },
-                { deltaTime: 0, type: 255, metaType: 47 },
+                {
+                    deltaTime: 0,
+                    type: 255,
+                    metaType: 3,
+                    data: "\u0000"
+                },
+                {
+                    deltaTime: 0,
+                    type: 255,
+                    metaType: 88,
+                    data: [1, 2, 36, 8]
+                },
+                {
+                    deltaTime: 0,
+                    type: 255,
+                    metaType: 88,
+                    data: [1, 2, 36, 8]
+                },
+                {
+                    deltaTime: 0,
+                    type: 9,
+                    channel: 0,
+                    data: [42, 119]
+                },
+                {
+                    deltaTime: 12,
+                    type: 8,
+                    channel: 0,
+                    data: [42, 64]
+                },
+                {
+                    deltaTime: 84,
+                    type: 9,
+                    channel: 0,
+                    data: [42, 119]
+                },
+                {
+                    deltaTime: 12,
+                    type: 8,
+                    channel: 0,
+                    data: [42, 64]
+                },
+                {
+                    deltaTime: 84,
+                    type: 9,
+                    channel: 0,
+                    data: [42, 119]
+                },
+                {
+                    deltaTime: 12,
+                    type: 8,
+                    channel: 0,
+                    data: [42, 64]
+                },
+                {
+                    deltaTime: 36,
+                    type: 9,
+                    channel: 0,
+                    data: [42, 119]
+                },
+                {
+                    deltaTime: 12,
+                    type: 8,
+                    channel: 0,
+                    data: [42, 64]
+                },
+                {
+                    deltaTime: 36,
+                    type: 9,
+                    channel: 0,
+                    data: [42, 119]
+                },
+                {
+                    deltaTime: 12,
+                    type: 8,
+                    channel: 0,
+                    data: [42, 64]
+                },
+                {
+                    deltaTime: 36,
+                    type: 9,
+                    channel: 0,
+                    data: [42, 119]
+                },
+                {
+                    deltaTime: 12,
+                    type: 8,
+                    channel: 0,
+                    data: [42, 64]
+                },
+                {
+                    deltaTime: 36,
+                    type: 9,
+                    channel: 0,
+                    data: [36, 119]
+                },
+                {
+                    deltaTime: 12,
+                    type: 8,
+                    channel: 0,
+                    data: [36, 64]
+                },
+                {
+                    deltaTime: 12,
+                    type: 9,
+                    channel: 0,
+                    data: [42, 119]
+                },
+                {
+                    deltaTime: 12,
+                    type: 8,
+                    channel: 0,
+                    data: [42, 64]
+                },
+                {
+                    deltaTime: 12,
+                    type: 9,
+                    channel: 0,
+                    data: [38, 118]
+                },
+                {
+                    deltaTime: 12,
+                    type: 8,
+                    channel: 0,
+                    data: [38, 64]
+                },
+                {
+                    deltaTime: 12,
+                    type: 9,
+                    channel: 0,
+                    data: [42, 119]
+                },
+                {
+                    deltaTime: 12,
+                    type: 8,
+                    channel: 0,
+                    data: [42, 64]
+                },
+                {
+                    deltaTime: 12,
+                    type: 9,
+                    channel: 0,
+                    data: [36, 118]
+                },
+                {
+                    deltaTime: 12,
+                    type: 8,
+                    channel: 0,
+                    data: [36, 64]
+                },
+                {
+                    deltaTime: 12,
+                    type: 9,
+                    channel: 0,
+                    data: [42, 118]
+                },
+                {
+                    deltaTime: 12,
+                    type: 8,
+                    channel: 0,
+                    data: [42, 64]
+                },
+                {
+                    deltaTime: 0,
+                    type: 9,
+                    channel: 0,
+                    data: [42, 118]
+                },
+                {
+                    deltaTime: 12,
+                    type: 9,
+                    channel: 0,
+                    data: [38, 118]
+                },
+                {
+                    deltaTime: 0,
+                    type: 8,
+                    channel: 0,
+                    data: [42, 64]
+                },
+                {
+                    deltaTime: 12,
+                    type: 8,
+                    channel: 0,
+                    data: [38, 64]
+                },
+                {
+                    deltaTime: 12,
+                    type: 9,
+                    channel: 0,
+                    data: [42, 118]
+                },
+                {
+                    deltaTime: 12,
+                    type: 8,
+                    channel: 0,
+                    data: [42, 64]
+                },
+                {
+                    deltaTime: 12,
+                    type: 9,
+                    channel: 0,
+                    data: [36, 118]
+                },
+                {
+                    deltaTime: 12,
+                    type: 8,
+                    channel: 0,
+                    data: [36, 64]
+                },
+                {
+                    deltaTime: 12,
+                    type: 9,
+                    channel: 0,
+                    data: [42, 118]
+                },
+                {
+                    deltaTime: 12,
+                    type: 8,
+                    channel: 0,
+                    data: [42, 64]
+                },
+                {
+                    deltaTime: 12,
+                    type: 9,
+                    channel: 0,
+                    data: [38, 119]
+                },
+                {
+                    deltaTime: 12,
+                    type: 8,
+                    channel: 0,
+                    data: [38, 64]
+                },
+                {
+                    deltaTime: 12,
+                    type: 9,
+                    channel: 0,
+                    data: [42, 119]
+                },
+                {
+                    deltaTime: 12,
+                    type: 8,
+                    channel: 0,
+                    data: [42, 64]
+                },
+                {
+                    deltaTime: 12,
+                    type: 9,
+                    channel: 0,
+                    data: [36, 119]
+                },
+                {
+                    deltaTime: 12,
+                    type: 8,
+                    channel: 0,
+                    data: [36, 64]
+                },
+                {
+                    deltaTime: 12,
+                    type: 9,
+                    channel: 0,
+                    data: [36, 120]
+                },
+                {
+                    deltaTime: 12,
+                    type: 8,
+                    channel: 0,
+                    data: [36, 64]
+                },
+                {
+                    deltaTime: 0,
+                    type: 9,
+                    channel: 0,
+                    data: [36, 120]
+                },
+                {
+                    deltaTime: 12,
+                    type: 8,
+                    channel: 0,
+                    data: [36, 64]
+                },
+                {
+                    deltaTime: 0,
+                    type: 9,
+                    channel: 0,
+                    data: [38, 120]
+                },
+                {
+                    deltaTime: 12,
+                    type: 8,
+                    channel: 0,
+                    data: [38, 64]
+                },
+                {
+                    deltaTime: 12,
+                    type: 9,
+                    channel: 0,
+                    data: [42, 120]
+                },
+                {
+                    deltaTime: 12,
+                    type: 8,
+                    channel: 0,
+                    data: [42, 64]
+                },
+                {
+                    deltaTime: 12,
+                    type: 9,
+                    channel: 0,
+                    data: [36, 120]
+                },
+                {
+                    deltaTime: 12,
+                    type: 8,
+                    channel: 0,
+                    data: [36, 64]
+                },
+                {
+                    deltaTime: 12,
+                    type: 9,
+                    channel: 0,
+                    data: [42, 120]
+                },
+                {
+                    deltaTime: 12,
+                    type: 8,
+                    channel: 0,
+                    data: [42, 64]
+                },
+                {
+                    deltaTime: 12,
+                    type: 9,
+                    channel: 0,
+                    data: [38, 121]
+                },
+                {
+                    deltaTime: 12,
+                    type: 8,
+                    channel: 0,
+                    data: [38, 64]
+                },
+                {
+                    deltaTime: 12,
+                    type: 9,
+                    channel: 0,
+                    data: [42, 121]
+                },
+                {
+                    deltaTime: 12,
+                    type: 8,
+                    channel: 0,
+                    data: [42, 64]
+                },
+                {
+                    deltaTime: 12,
+                    type: 9,
+                    channel: 0,
+                    data: [36, 121]
+                },
+                {
+                    deltaTime: 12,
+                    type: 8,
+                    channel: 0,
+                    data: [36, 64]
+                },
+                {
+                    deltaTime: 12,
+                    type: 9,
+                    channel: 0,
+                    data: [42, 121]
+                },
+                {
+                    deltaTime: 12,
+                    type: 8,
+                    channel: 0,
+                    data: [42, 64]
+                },
+                {
+                    deltaTime: 0,
+                    type: 9,
+                    channel: 0,
+                    data: [42, 121]
+                },
+                {
+                    deltaTime: 12,
+                    type: 9,
+                    channel: 0,
+                    data: [38, 121]
+                },
+                {
+                    deltaTime: 0,
+                    type: 8,
+                    channel: 0,
+                    data: [42, 64]
+                },
+                {
+                    deltaTime: 12,
+                    type: 8,
+                    channel: 0,
+                    data: [38, 64]
+                },
+                {
+                    deltaTime: 12,
+                    type: 9,
+                    channel: 0,
+                    data: [36, 121]
+                },
+                {
+                    deltaTime: 12,
+                    type: 8,
+                    channel: 0,
+                    data: [36, 64]
+                },
+                {
+                    deltaTime: 0,
+                    type: 9,
+                    channel: 0,
+                    data: [36, 121]
+                },
+                {
+                    deltaTime: 12,
+                    type: 8,
+                    channel: 0,
+                    data: [36, 64]
+                },
+                {
+                    deltaTime: 0,
+                    type: 9,
+                    channel: 0,
+                    data: [38, 121]
+                },
+                {
+                    deltaTime: 12,
+                    type: 8,
+                    channel: 0,
+                    data: [38, 64]
+                },
+                {
+                    deltaTime: 0,
+                    type: 9,
+                    channel: 0,
+                    data: [38, 121]
+                },
+                {
+                    deltaTime: 12,
+                    type: 9,
+                    channel: 0,
+                    data: [36, 121]
+                },
+                {
+                    deltaTime: 0,
+                    type: 8,
+                    channel: 0,
+                    data: [38, 64]
+                },
+                {
+                    deltaTime: 12,
+                    type: 8,
+                    channel: 0,
+                    data: [36, 64]
+                },
+                {
+                    deltaTime: 0,
+                    type: 9,
+                    channel: 0,
+                    data: [36, 121]
+                },
+                {
+                    deltaTime: 12,
+                    type: 8,
+                    channel: 0,
+                    data: [36, 64]
+                },
+                {
+                    deltaTime: 0,
+                    type: 9,
+                    channel: 0,
+                    data: [42, 121]
+                },
+                {
+                    deltaTime: 12,
+                    type: 8,
+                    channel: 0,
+                    data: [42, 64]
+                },
+                {
+                    deltaTime: 0,
+                    type: 9,
+                    channel: 0,
+                    data: [42, 121]
+                },
+                {
+                    deltaTime: 12,
+                    type: 9,
+                    channel: 0,
+                    data: [36, 121]
+                },
+                {
+                    deltaTime: 0,
+                    type: 8,
+                    channel: 0,
+                    data: [42, 64]
+                },
+                {
+                    deltaTime: 12,
+                    type: 8,
+                    channel: 0,
+                    data: [36, 64]
+                },
+                {
+                    deltaTime: 0,
+                    type: 9,
+                    channel: 0,
+                    data: [36, 121]
+                },
+                {
+                    deltaTime: 12,
+                    type: 8,
+                    channel: 0,
+                    data: [36, 64]
+                },
+                {
+                    deltaTime: 0,
+                    type: 9,
+                    channel: 0,
+                    data: [38, 121]
+                },
+                {
+                    deltaTime: 12,
+                    type: 9,
+                    channel: 0,
+                    data: [36, 121]
+                },
+                {
+                    deltaTime: 0,
+                    type: 8,
+                    channel: 0,
+                    data: [38, 64]
+                },
+                {
+                    deltaTime: 12,
+                    type: 8,
+                    channel: 0,
+                    data: [36, 64]
+                },
+                {
+                    deltaTime: 0,
+                    type: 9,
+                    channel: 0,
+                    data: [38, 121]
+                },
+                {
+                    deltaTime: 12,
+                    type: 9,
+                    channel: 0,
+                    data: [36, 121]
+                },
+                {
+                    deltaTime: 0,
+                    type: 8,
+                    channel: 0,
+                    data: [38, 64]
+                },
+                {
+                    deltaTime: 12,
+                    type: 8,
+                    channel: 0,
+                    data: [36, 64]
+                },
+                {
+                    deltaTime: 0,
+                    type: 9,
+                    channel: 0,
+                    data: [38, 121]
+                },
+                {
+                    deltaTime: 12,
+                    type: 9,
+                    channel: 0,
+                    data: [36, 121]
+                },
+                {
+                    deltaTime: 0,
+                    type: 8,
+                    channel: 0,
+                    data: [38, 64]
+                },
+                {
+                    deltaTime: 12,
+                    type: 8,
+                    channel: 0,
+                    data: [36, 64]
+                },
+                {
+                    deltaTime: 0,
+                    type: 9,
+                    channel: 0,
+                    data: [38, 121]
+                },
+                {
+                    deltaTime: 12,
+                    type: 9,
+                    channel: 0,
+                    data: [36, 121]
+                },
+                {
+                    deltaTime: 0,
+                    type: 8,
+                    channel: 0,
+                    data: [38, 64]
+                },
+                {
+                    deltaTime: 12,
+                    type: 8,
+                    channel: 0,
+                    data: [36, 64]
+                },
+                {
+                    deltaTime: 0,
+                    type: 9,
+                    channel: 0,
+                    data: [38, 121]
+                },
+                {
+                    deltaTime: 12,
+                    type: 8,
+                    channel: 0,
+                    data: [38, 64]
+                },
+                {
+                    deltaTime: 180,
+                    type: 9,
+                    channel: 0,
+                    data: [42, 121]
+                },
+                {
+                    deltaTime: 12,
+                    type: 8,
+                    channel: 0,
+                    data: [42, 64]
+                },
+                {
+                    deltaTime: 0,
+                    type: 255,
+                    metaType: 47
+                },
             ]
         },
     ],
@@ -208,16 +777,8 @@ var VirtualClipInstance = /** @class */ (function () {
     }
     return VirtualClipInstance;
 }());
-// Create a VirtualTrack for each instrument.
-// Implement simple intersection-resolution algo.
-// Note: even though we're scoping to a single instrument's video tracks, we should
-// generalize this so that the clips stitched-together could come from a variety of instruments.
-var virtualTracks = map([bassDrum], function (instrument) {
-    var midiStrikes = strikesByInstrument[instrument.shortName];
-    var virtualClips = map(midiStrikes, function (midiStrike) {
-        var newClip = new VirtualClipInstance(midiStrike, instrument.videoStrikes[0]);
-        return newClip;
-    });
+// resolves overlaps, computes before/afterSeconds on clips
+function scheduleVirtualClips(virtualClips) {
     for (var index = 0; index < virtualClips.length; index++) {
         var clip0 = virtualClips[index];
         var clip1 = virtualClips[index + 1];
@@ -239,11 +800,60 @@ var virtualTracks = map([bassDrum], function (instrument) {
             }
         }
     }
+}
+function assembleVirtualTrack(instruments) {
+    var allVirtualClips = [];
+    forEach(instruments, function (instrument) {
+        var midiStrikes = strikesByInstrument[instrument.shortName];
+        var virtualClips = map(midiStrikes, function (midiStrike) {
+            var newClip = new VirtualClipInstance(midiStrike, instrument.videoStrikes[0]);
+            return newClip;
+        });
+        allVirtualClips.push.apply(allVirtualClips, virtualClips);
+    });
+    allVirtualClips = allVirtualClips.sort(function (a, b) {
+        if (a.strikeAtSeconds < b.strikeAtSeconds) {
+            return -1;
+        }
+        else if (a.strikeAtSeconds > b.strikeAtSeconds) {
+            return 1;
+        }
+        else {
+            return 0;
+        }
+    });
+    scheduleVirtualClips(allVirtualClips);
     var virtualTrack = {
-        virtualClips: virtualClips
+        virtualClips: allVirtualClips
     };
     return virtualTrack;
-});
+}
+var virtualTracks = [assembleVirtualTrack([bassDrum, snareDrum, hiHatClosed])];
+// Create a VirtualTrack for each instrument.
+// Implement simple intersection-resolution algo.
+// Note: even though we're scoping to a single instrument's video tracks, we should
+// generalize this so that the clips stitched-together could come from a variety of instruments.
+// const virtualTracks: VirtualTrack[] = map(
+//   [bassDrum, hiHatClosed, snareDrum],
+//   (instrument: Instrument) => {
+//     const midiStrikes = strikesByInstrument[instrument.shortName];
+//     const virtualClips: VirtualClipInstance[] = map(
+//       midiStrikes,
+//       (midiStrike: MidiStrike) => {
+//         const newClip: VirtualClipInstance = new VirtualClipInstance(
+//           midiStrike,
+//           instrument.videoStrikes[0]
+//         );
+//         return newClip;
+//       }
+//     );
+//     scheduleVirtualClips(virtualClips);
+//     const virtualTrack: VirtualTrack = {
+//       virtualClips: virtualClips,
+//     };
+//     return virtualTrack;
+//   }
+// );
 forEach(virtualTracks, function (virtualTrack, trackIndex) {
     var videoTrack = videoTracks[trackIndex];
     forEach(virtualTrack.virtualClips, function (virtualClip, clipIndex) {
@@ -259,6 +869,8 @@ forEach(virtualTracks, function (virtualTrack, trackIndex) {
         var clipEnd = virtualClip.strikeAtSeconds +
             virtualClip.afterSeconds +
             STARTING_OFFSET;
+        var duration = clipEnd - clipStart;
+        $.writeln("".concat(instrument.name, ": midi strike: ").concat(clipStart, " - ").concat(clipEnd, ", duration: ").concat(duration));
         videoTrack.overwriteClip(clip, clipStart);
         // grab the clip instance we just added to the sequence
         var clipInstance = videoTrack.clips[clipIndex];
@@ -268,7 +880,5 @@ forEach(virtualTracks, function (virtualTrack, trackIndex) {
             // when it is, we need to add it to the inPoint so that the clip starts _later_
             clipInstance.inPoint = clipInstance.inPoint.seconds + delta;
         }
-        var duration = clipEnd - clipStart;
-        $.writeln("".concat(instrument.name, ": midi strike: ").concat(clipStart, " - ").concat(clipEnd, ", duration: ").concat(duration));
     });
 });
