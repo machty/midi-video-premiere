@@ -1,11 +1,14 @@
 let midiParser  = require('midi-parser-js');
 let fs = require('fs')
 
-// read a .mid binary (as base64)
-// drumbeat_ez_4_4_75bpm.mid
-fs.readFile('./grudge_bass_drum.mid', 'base64', function (err, data) {
-  // Parse the obtainer base64 string ...
+// usage:
+// node json-to-midi.js file.mid
+
+let filename = process.argv[2];
+let outFilename = `${filename}.json`;
+console.log(`converting ${filename} to json, writing to ${outFilename}`)
+fs.readFile(filename, 'base64', function (err, data) {
   var midiArray = midiParser.parse(data);
-  // done!
-  console.log(JSON.stringify(midiArray));
+  const json = JSON.stringify(midiArray, null, 2);
+  fs.writeFileSync(outFilename, json);
 });
