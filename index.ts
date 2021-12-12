@@ -801,7 +801,8 @@ const strikesByInstrument = groupBy(strikes, "instrument.shortName");
 
 const STARTING_OFFSET = 1; // seconds
 const CLIP_FRAMES_BEFORE_STRIKE = 10; // hacky, but sidesteps the issue of markers having negative times
-const FPS = 24;
+// const FPS = 24;
+const FPS = 29.97; // TODO: generalize / use clip fps
 const CLIP_SECONDS_BEFORE_STRIKE = CLIP_FRAMES_BEFORE_STRIKE / FPS;
 
 class VirtualClipInstance {
