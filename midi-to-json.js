@@ -2,7 +2,7 @@ let midiParser  = require('midi-parser-js');
 let fs = require('fs')
 
 // usage:
-// node json-to-midi.js file.mid
+// node midi-to-json.js file.mid
 
 let filename = process.argv[2];
 let outFilename = `${filename}.json`;
